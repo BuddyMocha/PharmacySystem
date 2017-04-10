@@ -14,6 +14,12 @@ private:
 	int month, day, year;
 	std::vector<std::string> dataLogs;
 	std::vector<Store> storeChain;
+	vector<Item> stockableItems;
+	vector<Insurance> insuranceProviders;
+
+public:
+	Store addStore();
+	void deleteStore(Store);
 
 };
 

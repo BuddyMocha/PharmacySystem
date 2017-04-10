@@ -48,7 +48,10 @@ private:
 public:
 	//Constructor for new store
 	Store(std::string name, int idNum, int priority, std::vector<Employee> employees);
+
 	//Getters and setters for private vars
+	//ID
+	int getID();
 	//Priority
 	int getPriority();
 	void setPriority(int priority);
@@ -58,8 +61,10 @@ public:
 		//Overloaded, first definition takes a specific quantity of an item, the second removes the item from inventory completely
 	Item removeItemFromInv(Item item, int quantity);
 	Item removeItemFromInv(Item item);
-	//Restock order list
+	//Restock order list, get is overloaded to easily find a specific item in the list or retrieve full list
 	std::vector<Item> getOrderList();
+	Item getOrderList(Item i);
+
 	void addToOrder(Item item);
 	//Employee
 	std::vector<Employee> getEmployees();
@@ -67,8 +72,21 @@ public:
 	void addCustomer(Customer newCustomer);
 	Customer getCustomer(int idNum);
 	std::vector<Customer> getCustomerList();
+	//Purchases
+	void addPurchase(Purchase p);
+	std::vector<Purchase> getPurchaseList();
 
-
+	//Class Functions
+	//Checks for allowed employee credentials, returns allowed or denied
+	bool verifyEmployee(std::string username, std::string password);
+	//Finds all purchases related to a customer
+	std::vector<Purchase> findCustomerPurchases(Customer c);
+	//Formats a chart to display a store's purchases, but would likely be better at Company level
+	std::string displayPurchases(int year);
+	//Major Transaction method, likely will have sub-methods
+	Purchase transaction(Customer c, std::vector<Item> purchase);
+	//Ran daily to remove expired items, and will return a string to log removed items
+	std::string removeExpiredItems(int month, int day, int year);
 
 
 
