@@ -1,8 +1,6 @@
 #pragma once
-#ifndef Company_H
-#define Company_H
-#include "Item.h"
-#include "Store.h"
+#include "Item_ExpDate.h"
+#include "Store_Customer_Employee_Purchase.h"
 #include <vector>
 
 struct Warehouse
@@ -19,4 +17,3 @@ private:
 
 };
 
-#endif
