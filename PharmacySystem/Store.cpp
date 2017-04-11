@@ -1,7 +1,7 @@
 #include "Store_Customer_Employee_Purchase.h"
 
-Store::Store(std::string name, int idNum, int priority, std::vector<Employee> employees)
-	: name(name), idNum(idNum), priority(priority), employees(employees) 
+Store::Store(std::string name, int idNum, int priority)
+	: name(name), idNum(idNum), priority(priority)) 
 { 
 }
 
@@ -20,5 +20,10 @@ void Store::setPriority(int p){
 void Store::addItemtoInv(Item item){
 	inventory.push_back(item);
 }
+
+Item removeItemFromInv()
+
+
+
 
 

@@ -18,10 +18,6 @@ struct Customer
 	Insurance insurance;
 };
 
-struct Employee
-{
-	std::string name, username, password;
-};
 
 //storeNumber can be retrieved from encapsulating store
 struct Purchase
@@ -47,7 +43,7 @@ private:
 	std::vector<Purchase> transactions;
 public:
 	//Constructor for new store
-	Store(std::string name, int idNum, int priority, std::vector<Employee> employees);
+	Store(std::string name, int idNum, int priority);
 
 	//Getters and setters for private vars
 	//ID
@@ -66,8 +62,6 @@ public:
 	Item getOrderList(Item i);
 
 	void addToOrder(Item item);
-	//Employee
-	std::vector<Employee> getEmployees();
 	//Customer
 	void addCustomer(Customer newCustomer);
 	Customer getCustomer(int idNum);
@@ -77,8 +71,6 @@ public:
 	std::vector<Purchase> getPurchaseList();
 
 	//Class Functions
-	//Checks for allowed employee credentials, returns allowed or denied
-	bool verifyEmployee(std::string username, std::string password);
 	//Finds all purchases related to a customer
 	std::vector<Purchase> findCustomerPurchases(Customer c);
 	//Formats a chart to display a store's purchases, but would likely be better at Company level
