@@ -27,13 +27,13 @@
     <ClInclude Include="Header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Store_Customer_Employee_Purchase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Company_Warehouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Item_ExpDate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Store_Customer_Insurance_Purchase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -48,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Company.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_ExpDate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

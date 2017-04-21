@@ -1,6 +1,5 @@
 #pragma once
 #include "Store_Customer_Insurance_Purchase.h"
-#include <vector>
 
 struct Warehouse
 {
@@ -21,23 +20,53 @@ private:
 	std::vector<Item> stockableItems;
 	std::vector<Insurance> insuranceProviders;
 	std::vector<Employee> employeeList;
+	std::vector<Customer> customers;
 	//Batch file class(s) can be added here
 
 
 public:
-	Store addStore();
-	void deleteStore(Store);
+	Company(Warehouse warehouse, int day, int month, int year, std::vector<Store> stores, std::vector<Item> items, std::vector<Insurance> insurance);
+	//getters & setters
+	//Store
+	void addStore(Store s);
+	void deleteStore(int id);
+	Store* getStore(int id);
+	//Item
 	Item addItemToStock();
 	void deleteItemFromStock(Item i);
+	std::vector<Item> getItemList();
 	void sendItems(std::vector<Item> order, Store destination);
-	void endDay();
-	void beginDay();
-
 	//Employee
 	std::vector<Employee> getEmployees();
 	void addEmployee(Employee e);
-		//Checks for allowed employee credentials, returns allowed or denied
+	//Insurance
+	std::vector<Insurance> getInsuranceList();
+	Insurance* getInsurance(int idNum);
+	void addInsurance(Insurance i);
+	//Customer
+	int customerNum = 0;
+	void addCustomer(Customer newCustomer);
+	void createCustomer();
+	Customer* getCustomer(std::string phoneNum);
+	std::vector<Customer> getCustomerList();
+
+
+	//Checks for allowed employee credentials, returns bool allowed or denied
 	bool verifyEmployee(std::string username, std::string password);
+
+	//Class functions
+	void endDay();
+	void beginDay();
+
+	//Major Transaction method, likely will have sub-methods
+	void transaction();
+
+	//Finds all purchases related to a customer
+	std::vector<Purchase> findCustomerPurchases(Customer c);
+	//Formats a chart to display a store's purchases, but would likely be better at Company level
+	std::string displayPurchases(int year);
+
+	
 
 };
 
