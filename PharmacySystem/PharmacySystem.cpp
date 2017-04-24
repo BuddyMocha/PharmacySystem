@@ -129,10 +129,9 @@ void verifyEmployee()
 		cout << "Enter their username and password.\n";
 		cin >> userName >> password;
 
-
-		for (unsigned int i = 0; i < Employees.size(); i++)
+		for (unsigned int i = 0; i < employeeList.size(); i++)
 		{
-			if ((userName == Employees[i].username) && (password == Employees[i].password) && (Employees[i].name != currentUser))
+			if ((userName == employeeList[i].username) && (password == employeeList[i].password) && (employeeList[i].name != currentUser))
 			{
 				found = true;
 				//cout << found << endl;
