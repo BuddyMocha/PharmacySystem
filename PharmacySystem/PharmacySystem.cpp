@@ -1,26 +1,35 @@
 // PharmacySystem.cpp : Defines the entry point for the console application.
 //Pharmacy System Main Menu: Includes functions related to logging onto the Pharmacy system
 
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <ctime>
 
 #include "stdafx.h"
 #include "Item_ExpDate.h"
 #include "Company_Warehouse.h"
-#include <iostream>
 
+using namespace std;
 
-//struct Employee
-//{
-//	string name, username, password;
-//};
+struct Employee
+{
+	string name, username, password;
+};
 
 vector<Employee> employeeList;
 string currentUser;
 bool LoggedIn = false;
+
+struct tm date;
+int year;
+int month;
+int day;
 
 //read in and store employee login info
 void readEmployeeFile()
@@ -96,7 +105,6 @@ void employeeLogin()
 		{
 			cout << "Access Granted. \n";
 			LoggedIn = true;
-			cout << "User: " << currentUser << endl;;
 			break;
 		}
 		else
@@ -104,6 +112,87 @@ void employeeLogin()
 			cout << "Access Denied. \n";
 		}
 	}
+}
+
+//Verifies second employees credentials to allow transaction to be processed
+void verifyEmployee()
+{
+	string userName;
+	string password;
+	bool found = false;
+
+	for (unsigned int i = 5; i > 0; i--)
+	{
+		cout << endl;
+		cout << i << " tries remaining. \n";
+		cout << "You need to have another employee verify this. \n";
+		cout << "Enter their username and password.\n";
+		cin >> userName >> password;
+
+
+		for (unsigned int i = 0; i < Employees.size(); i++)
+		{
+			if ((userName == Employees[i].username) && (password == Employees[i].password) && (Employees[i].name != currentUser))
+			{
+				found = true;
+				//cout << found << endl;
+				break;
+			}
+		}
+
+		if (found == true)
+		{
+			cout << "Valid Credentials. \n";
+			break;
+		}
+		else
+		{
+			cout << "Invalid Credentials. \n";
+		}
+	}
+}
+
+//Get todays date
+void getTodaysDate()
+{
+	time_t today = time(0);
+	struct tm *now = localtime(&today);
+
+	year = now->tm_year + 1900;
+	month = now->tm_mon + 1;
+	day = now->tm_mday;
+}
+
+//Setup date structure
+void setupDate()
+{
+	date = { 0, 0, 0, 12 };
+
+	//Set up the date structure
+	date.tm_year = year - 1900;
+	date.tm_mon = month - 1;		//note: zero indexed
+	date.tm_mday = day;				//note: not zero indexed
+}
+
+//Add to a date
+void datePlusDays(struct tm* date, int days)
+{
+	const time_t ONE_DAY = 24 * 60 * 60;
+
+	//Seconds since start of epoch
+	time_t date_seconds = mktime(date) + (days * ONE_DAY);
+
+	//Update caller's date
+	//Use localtime because mktime converts to UTC so may change date
+	*date = *localtime(&date_seconds);;
+}
+
+//Update date
+void updateDate()
+{
+	year = date.tm_year + 1900;
+	month = date.tm_mon + 1;
+	day = date.tm_mday;
 }
 
 //sample function to show how a program could run 
@@ -141,8 +230,14 @@ int main()
 		return 0;
 	}
 
+	getTodaysDate();
+	setupDate();
+
 	while (systemOn != false)
 	{
+		cout << endl;
+		cout << "Current User: " << currentUser << endl;;
+		cout << "Todays Date: " << month << "/" << day << "/" << year << endl;
 		cout << endl;
 		cout << "********Pharmacy System*********\n";
 		cout << "********************************\n";
@@ -181,6 +276,7 @@ int main()
 			cout << "*******Enter Transaction********\n";
 			cout << "********************************\n";
 			// rest of code here
+			verifyEmployee();
 			sampleProgram();
 			break;
 		case 3:
@@ -209,12 +305,19 @@ int main()
 			cout << "*********Employee Login*********\n";
 			cout << "********************************\n";
 			// rest of code here
+			employeeLogin();
 			sampleProgram();
 			break;
 		case 7:
 			cout << endl;
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
+
+			//Date plus one day
+			datePlusDays(&date, 1);
+			//Change current date to new date
+			updateDate();
+
 			// check expiration dates
 			// process batch files
 			// rest of code here
