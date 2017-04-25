@@ -1,17 +1,20 @@
 // PharmacySystem.cpp : Defines the entry point for the console application.
 //Pharmacy System Main Menu: Includes functions related to logging onto the Pharmacy system
 
+#include "stdafx.h"
+#include "Item_ExpDate.h"
+#include "Company_Warehouse.h"
+
+/*
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <vector>
 
-#include "stdafx.h"
-#include "Item_ExpDate.h"
-#include "Company_Warehouse.h"
-#include <iostream>
 
+
+using namespace std;
 
 //struct Employee
 //{
@@ -234,24 +237,56 @@ int main()
 			break;
 		}
 	}
-
+	
 	return 0;
 }
+*/
+
+//Tester main
+//Does NOT use namespace std, will need slight edits
+
+
+
 int main()
 {
 	Warehouse testStock;
-	ExpirationDate testDate1 = ExpirationDate(12, 12, 17, 3);
+	ExpirationDate testDate1 = ExpirationDate(12, 12, 16, 3);
 	ExpirationDate testDate2 = ExpirationDate(13, 12, 17, 7);
-	std::vector<ExpirationDate> testDateVector;
-	testDateVector.push_back(testDate1);
-	testDateVector.push_back(testDate2);
+	ExpirationDate testDate3 = ExpirationDate(13, 11, 18, 7);
+	ExpirationDate testDate4 = ExpirationDate(14, 12, 17, 7);
+	ExpirationDate testDate5 = ExpirationDate(12, 12, 17, 7);
+	std::vector<ExpirationDate> testDateVector1;
+	testDateVector1.push_back(testDate1);
+	testDateVector1.push_back(testDate2);
+	testDateVector1.push_back(testDate3);
+	testDateVector1.push_back(testDate4);
+	testDateVector1.push_back(testDate5);
 
-	Item testItem = Item(1, 10, 1.25f, 5, 15, testDateVector);
+	ExpirationDate testDate6 = ExpirationDate(17, 8, 17, 3);
+	ExpirationDate testDate7 = ExpirationDate(19, 12, 17, 7);
+	ExpirationDate testDate8 = ExpirationDate(13, 11, 18, 7);
+	ExpirationDate testDate9 = ExpirationDate(14, 2, 16, 7);
+	ExpirationDate testDate10 = ExpirationDate(11, 5, 17, 7);
+	std::vector<ExpirationDate> testDateVector2;
+	testDateVector2.push_back(testDate6);
+	testDateVector2.push_back(testDate7);
+	testDateVector2.push_back(testDate8);
+	testDateVector2.push_back(testDate9);
+	testDateVector2.push_back(testDate10);
 
-	testStock.inventory.push_back(testItem);
+	Item testItem1 = Item(1, 31, 1.25f, 5, 15, testDateVector1);
+	Item testItem2 = Item(1, 31, 1.25f, 5, 15, testDateVector2);
+
+	std::cout << testItem1.allDataToString() << "\n" << std::endl;
+	std::cout << testItem2.allDataToString() << "\n" << std::endl;
+	std::cout << "Adding quantities" << "\n" << std::endl;
+	testItem1.addQuantity(testItem2);
+	std::cout << testItem1.allDataToString() << std::endl;
+
+	testStock.inventory.push_back(testItem1);
 
 	Store store = Store(1, 0);
-	store.addItemtoInv(testItem);
+	store.addItemtoInv(testItem1);
 
 	std::vector<Store> testStoreVector;
 	testStoreVector.push_back(store);
@@ -274,9 +309,10 @@ int main()
 
 
 	
-	Customer testCustomer = Customer("Brad", "1212 B-Ball Ct.", "7345559059", company.getInsurance(1));
-	company.addCustomer(testCustomer);
-	company.transaction();
+	//Customer testCustomer = Customer("Brad", "1212 B-Ball Ct.", "7345559059", company.getInsurance(1));
+	//company.addCustomer(testCustomer);
+	//company.transaction();
+
 
 	system("PAUSE");
     return 0;

@@ -59,7 +59,7 @@ public:
 	Item removeItemFromInv(int idNum, int quantity);
 	//Restock order list, get is overloaded to easily find a specific item in the list or retrieve full list
 	std::vector<Item> getOrderList();
-	Item getOrderList(Item i);
+	Item getOrderList(int idNum);
 	void addToOrder(Item item);
 	//Purchases
 	void addPurchase(Purchase p);

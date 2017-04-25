@@ -3,12 +3,15 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include<algorithm>
 
 struct ExpirationDate
 {
 	ExpirationDate(int day, int month, int year, int quantity);
 	int month, day, year, quantity;
 	std::string toString();
+	bool operator <(ExpirationDate expDate);
+	bool operator ==(const ExpirationDate expDate);
 };
 
 //may be turned to struct and have store manage item quantity

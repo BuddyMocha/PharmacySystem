@@ -4,6 +4,7 @@
 struct Warehouse
 {
 	std::vector<Item> inventory;
+	Item* getItem(int idNum);
 };
 
 struct Employee
@@ -32,9 +33,10 @@ public:
 	void deleteStore(int id);
 	Store* getStore(int id);
 	//Item
-	Item addItemToStock();
-	void deleteItemFromStock(Item i);
-	std::vector<Item> getItemList();
+	void addItemToStock(Item i);
+	void deleteItemFromStock(int id);
+	bool isItemInStock(int id);
+	std::vector<Item>* getItemList();
 	void sendItems(std::vector<Item> order, Store destination);
 	//Employee
 	std::vector<Employee> getEmployees();

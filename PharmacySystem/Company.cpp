@@ -8,12 +8,106 @@ Company::Company(Warehouse warehouse, int day, int month, int year, std::vector<
 
 	customers = std::vector<Customer>();
 }
+//Adds a new stockable item
+void Company::addItemToStock(Item i)
+{
+	for (int x = 0; x < stockableItems.size(); x++)
+	{
+		if (stockableItems[x].idNum == i.idNum)
+		{
+			std::cout << "Item addition canceled, item already exists." << std::endl;
+			return;
+		}
+	};
+	stockableItems.push_back(i);
+}
+//Deletes an allowed stockable item
+void Company::deleteItemFromStock(int id)
+{
+	for (int x = 0; x < stockableItems.size(); x++)
+	{
+		if (stockableItems[x].idNum == id)
+		{
+			stockableItems.erase(stockableItems.begin() + x);
+		}
+	};
+}
 
+//Returns whether an item exists
+bool Company::isItemInStock(int id)
+{
+	for (int x = 0; x < stockableItems.size(); x++)
+	{
+		if (stockableItems[x].idNum == id)
+		{
+			return true;
+		}
+	};
+	return false;
+}
+
+//Returns stockable items
+std::vector<Item>* Company::getItemList()
+{
+	return &stockableItems;
+}
+
+//GEts item from warehouse with id
+Item* Warehouse::getItem(int idNum)
+{
+	for (int x = 0; x < inventory.size(); x++)
+	{
+		if (inventory[x].idNum = idNum)
+		{
+			return &inventory[x];
+		}
+	}
+	return nullptr;
+}
+//Sends items from the warehouse to a store, will be done overnight so need a log to save data
+void Company::sendItems(std::vector<Item> order, Store destination)
+{
+	std::vector<Item> completedOrder;
+	for (int x = 0; x < order.size(); x++)
+	{
+		Item* warehouseItem = warehouse.getItem(order[x].idNum);
+		if (warehouseItem != nullptr)
+		{
+			if (warehouseItem->quantity >= order[x].quantity)
+			{
+				completedOrder.push_back(warehouseItem->removeQuantity(order[x].quantity));
+			}
+			else if (warehouseItem->quantity > 0)
+			{
+				completedOrder.push_back(warehouseItem->removeQuantity(warehouseItem->quantity));
+				//Log not sufficient quantity, order from vendor
+			}
+			else
+			{
+				//Log no item quantity, order from vendor
+			}
+		}
+		else if(!isItemInStock(order[x].idNum))
+		{
+			//Log that item was not a stockable item
+		}
+		else
+		{
+			//Log that item was not found in warehouse
+		}
+	}
+
+	for (int x = 0; x < completedOrder.size(); x++)
+	{
+		destination.addItemtoInv(completedOrder[x]);
+	}
+}
+//Adds employee with specified argument
 void Company::addEmployee(Employee e)
 {
 	employeeList.push_back(e);
 }
-
+//Adds store with specified argument if the ID doesn't exist
 void Company::addStore(Store s)
 {
 	for (int x = 0; x < storeChain.size(); x++)
@@ -26,7 +120,7 @@ void Company::addStore(Store s)
 	}
 	storeChain.push_back(s);
 }
-
+//Deletes Store with Given ID
 void Company::deleteStore(int id)
 {
 	for (int x = 0; x < storeChain.size(); x++)
@@ -38,6 +132,7 @@ void Company::deleteStore(int id)
 	}
 }
 
+//Gets store with given ID
 Store* Company::getStore(int id)
 {
 	for (int x = 0; x < storeChain.size(); x++)
@@ -51,10 +146,7 @@ Store* Company::getStore(int id)
 	return nullptr;
 }
 
-
-
-
-
+//Adds new allowed insurance to the company's database
 void Company::addInsurance(Insurance i)
 {
 	for (int x = 0; x < customers.size(); x++)
@@ -68,6 +160,7 @@ void Company::addInsurance(Insurance i)
 	insuranceProviders.push_back(i);
 }
 
+//Gets insurance based off the ID number, and checks if it is supported from the database
 Insurance* Company::getInsurance(int idNum)
 {
 	for (int x = 0; x < insuranceProviders.size(); x++)
@@ -81,6 +174,7 @@ Insurance* Company::getInsurance(int idNum)
 	return nullptr;
 }
 
+//Adds customer from argument unless phoneNum is already registered
 void Company::addCustomer(Customer newCustomer) {
 	for (int x = 0; x < customers.size(); x++)
 	{
@@ -93,6 +187,7 @@ void Company::addCustomer(Customer newCustomer) {
 	customers.push_back(newCustomer);
 }
 
+//Called from the transaction method, this adds a customer to the company's database
 void Company::createCustomer()
 {
 	std::string phoneNum = "";
@@ -132,11 +227,11 @@ void Company::createCustomer()
 	}
 	else
 	{
-		std::cout << "This phone number already belongs to a customer's account." << std::endl;
+		std::cout << "This phone number already belongs to a customer's account, creation canceled." << std::endl;
 		return;
 	}
 }
-
+//Returns customer object from given phone number
 Customer* Company::getCustomer(std::string phoneNum) {
 	for (int x = 0; x < customers.size(); x++)
 	{
@@ -148,7 +243,7 @@ Customer* Company::getCustomer(std::string phoneNum) {
 	//std::cout << "Customer not found, please input valid phone # without dashes." << std::endl;
 	return nullptr;
 }
-
+//Full transaction method, does not currently allow backing out of transaction
 void Company::transaction()
 {
 	bool finished = false;
@@ -156,7 +251,7 @@ void Company::transaction()
 	Customer* customer = nullptr;
 	int inputNum = -1;
 	std::string input = "";
-	bool referred;
+	//Find store
 	std::cout << "Please input the ID number of the store you are purchasing from." << std::endl;
 	while (currentStore == nullptr)
 	{
@@ -172,6 +267,7 @@ void Company::transaction()
 			std::cout << "Invalid store ID, please input a valid ID number." << std::endl;
 		}
 	}
+	//Get customer
 	std::cout << "Please input the 10 digit phone number of the customer, or enter \"n\" to enter a new customer." << std::endl;
 	inputNum = -1;
 	input = "";
@@ -193,6 +289,7 @@ void Company::transaction()
 			std::cout << "Please enter a valid input." << std::endl;
 		}
 	}
+	//Get referral if available
 	input = "";
 	std::cout << "Was this customer referred? If so, input the referrer's phone #. Else input \"n\" to continue." << std::endl;
 	while (input != "n")
@@ -214,6 +311,7 @@ void Company::transaction()
 			std::cout << "Please enter \"n\" or a valid 10-digit phone number." << std::endl;
 		}
 	}
+	//Find Items and Remove from stock
 	input = "";
 	std::cout << "Please enter the ID number of the product being purchased, and \"n\" to finalize the transaction." << std::endl;
 	std::cout << "The customer may only purchase 5 items per transaction." << std::endl;
@@ -271,6 +369,11 @@ void Company::transaction()
 		}
 		
 	}
+
+	//2nd employee should confirm transaction here
+
+	//Show cart, cost, and deduct referral & insurance amount
+
 	std::cout << "Cart:" << std::endl;
 	float price = 0;
 	for (int x = 0; x < purchase.size(); x++)
@@ -278,6 +381,9 @@ void Company::transaction()
 		std::cout << purchase[x].checkoutString() << std::endl;
 		price += purchase[x].price * purchase[x].quantity;
 	}
+	std::cout << "Insurance reduction: " << customer->insurance->copay << std::endl;
+	//Getting copay:
+	price = price * (1 - customer->insurance->copay);
 	std::cout << std::fixed << std::setprecision(2);
 	std::cout << "The total for your order is: " << price << std::endl;
 	bool referral = false;

@@ -1,9 +1,9 @@
 #include "Item_ExpDate.h"
-
+//Constructor for ExpDate
 ExpirationDate::ExpirationDate(int day, int month, int year, int quantity)
 	:day(day), month(month), year(year), quantity(quantity)
 {}
-
+//Used in outputting item data
 std::string ExpirationDate::toString()
 {
 	std::stringstream output;
@@ -11,11 +11,48 @@ std::string ExpirationDate::toString()
 	return output.str();
 }
 
+//Operator overloads to make date sorting easier
+//Read: "If expDate 1 is earlier than expDate 2"
+bool ExpirationDate::operator <(ExpirationDate expDate)
+{
+	if (year < expDate.year)
+	{
+		return true;
+	}
+	else if (year == expDate.year)
+	{
+		if (month < expDate.month)
+		{
+			return true;
+		}
+		else if (month == expDate.month && day < expDate.day)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+//If the dates are equal...
+bool ExpirationDate::operator ==(const ExpirationDate expDate)
+{
+	if (year == expDate.year)
+	{
+		if (month == expDate.month)
+		{
+			if (day == expDate.day)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+//Item constructor
 Item::Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates)
 	:idNum(idNum), quantity(quantity), price(price), requiredRestock(requiredStock), restockQuantity(restockQuantity), expirationDates(expDates)
 {
 }
-
+//Outputs all item data, including expDates
 std::string Item::allDataToString()
 {
 	std::stringstream output;
@@ -28,7 +65,7 @@ std::string Item::allDataToString()
 
 	return output.str();
 }
-
+//A sepecific string used during checkout, showing price charged
 std::string Item::checkoutString()
 {
 	std::stringstream output;
@@ -36,7 +73,7 @@ std::string Item::checkoutString()
 	output << "    Price: " << price * quantity << "\n";
 	return output.str();
 }
-
+//Simple string output, only showing ID and quantity
 std::string Item::toString()
 {
 	std::stringstream output;
@@ -44,20 +81,32 @@ std::string Item::toString()
 	return output.str();
 }
 
+//Adds the quantity of 2 items together, and merges their experation date lists
 void Item::addQuantity(Item stock)
 {
 	quantity += stock.quantity;
-	for (int x = 0; x < expirationDates.size(); x++)
+	for (int x = 0; x < stock.expirationDates.size(); x++)
 	{
-
+		expirationDates.push_back(stock.expirationDates[x]);
+	}
+	std::sort(expirationDates.begin(), expirationDates.end());
+	for (int x = 0; x < expirationDates.size() - 1; x++)
+	{
+		if (expirationDates[x] == expirationDates[x + 1])
+		{
+			expirationDates[x].quantity += expirationDates[x + 1].quantity;
+			expirationDates.erase(expirationDates.begin() + x + 1);
+		}
 	}
 }
 
+//Removes a quantity of the item from stock, removing the most recent expiration dates, and returning an Item object with the removed data
 Item Item::removeQuantity(int amount)
 {
 	int initialAmount = amount;
 	std::vector<ExpirationDate> expDates;
 	quantity -= amount;
+	//Sorts the expDate list before removing items. If process is too slow, remove this line
 	if (amount <= quantity)
 	{
 		for (int x = 0; x < expirationDates.size() && amount > 0; x++)
