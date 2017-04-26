@@ -116,7 +116,7 @@ void employeeLogin()
 }
 
 //Verifies second employees credentials to allow transaction to be processed
-void verifyEmployee()
+bool verifyEmployee()
 {
 	string userName;
 	string password;
@@ -143,6 +143,7 @@ void verifyEmployee()
 		if (found == true)
 		{
 			cout << "Valid Credentials. \n";
+			return true;
 			break;
 		}
 		else
@@ -150,6 +151,8 @@ void verifyEmployee()
 			cout << "Invalid Credentials. \n";
 		}
 	}
+
+	return false;
 }
 
 //Get todays date
@@ -276,7 +279,15 @@ int main()
 			cout << "*******Enter Transaction********\n";
 			cout << "********************************\n";
 			// rest of code here
-			verifyEmployee();
+
+			if (verifyEmployee() == true)
+			{
+				cout << "Processing Transaction. \n";
+			}
+			else
+			{
+				cout << "Can't Process Transaction. \n";
+			}
 			sampleProgram();
 			break;
 		case 3:
