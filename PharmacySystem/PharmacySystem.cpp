@@ -21,17 +21,17 @@ using namespace std;
 #include "checkHeader.h"//checks header and rejects text file if conditions not met
 #include "checkTrailer.h"//checks trailer
 
-#include "AddDeleteStore.h";
+#include "AddDeleteStore.h"
 #include "StoreUpdate.h"
 #include "ItemReceived.h"
 #include "VendorOrder.h"//function for processing vendororder.txt
 #include "Items.h"
 #include "Reports.h"//function for processing reports.txt
 
-#include "batch2program.h";
+#include "batch2program.h"
 
 
-#include "PharmacyFunctions.h";//William's stuff
+#include "PharmacyFunctions.h"//William's stuff
 
 int main()
 {
@@ -56,22 +56,24 @@ int main()
 
 	int choice;
 	bool systemOn = true;
-
+	Company company;
 	//employee login here
-	employeeLogin();
-	if (LoggedIn == false)
+
+	company.employeeLogin();
+
+	if (company.getLoggedIn() == false)
 	{
 		return 0;
 	}
 
-	getTodaysDate();
-	setupDate();
+	company.getTodaysDate();
+	company.setupDate();
 
 	while (systemOn != false)
 	{
 		cout << endl;
-		cout << "Current User: " << currentUser << endl;;
-		cout << "Todays Date: " << month << "/" << day << "/" << year << endl;
+		cout << "Current User: " << company.getCurrentUser() << endl;;
+		cout << "Todays Date: " << company.getMonth() << "/" << company.getDay() << "/" << company.getYear() << endl;
 		cout << endl;
 		cout << "********Pharmacy System*********\n";
 		cout << "********************************\n";
@@ -111,7 +113,7 @@ int main()
 			cout << "********************************\n";
 			// rest of code here
 
-			if (verifyEmployee() == true)
+			if (company.verifyEmployee() == true)
 			{
 				cout << "Processing Transaction. \n";
 			}
@@ -147,7 +149,7 @@ int main()
 			cout << "*********Employee Login*********\n";
 			cout << "********************************\n";
 			// rest of code here
-			employeeLogin();
+			company.employeeLogin();
 			sampleProgram();
 			break;
 		case 7:
@@ -168,9 +170,9 @@ int main()
 			addStore2program(addDeleteStore, company);
 
 			//Date plus one day
-			datePlusDays(&date, 1);
+			company.datePlusDays(1);
 			//Change current date to new date
-			updateDate();
+			company.updateDate();
 
 			// check expiration dates
 			// process batch files

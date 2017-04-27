@@ -16,17 +16,21 @@ class Company{
 private:
 	Warehouse warehouse;
 	int month, day, year;
+	struct tm date;
 	std::vector<std::string> dataLogs;
 	std::vector<Store> storeChain;
 	std::vector<Item> stockableItems;
 	std::vector<Insurance> insuranceProviders;
 	std::vector<Employee> employeeList;
 	std::vector<Customer> customers;
+	std::string currentUser;
+	bool loggedIn = false;
 	//Batch file class(s) can be added here
 
 
 public:
 	Company(Warehouse warehouse, int day, int month, int year, std::vector<Store> stores, std::vector<Item> items, std::vector<Insurance> insurance);
+	Company();
 	//getters & setters
 	//Store
 	Company();
@@ -48,6 +52,8 @@ public:
 	//Employee
 	std::vector<Employee> getEmployees();
 	void addEmployee(Employee e);
+	bool getLoggedIn();
+	std::string getCurrentUser();
 	//Insurance
 	std::vector<Insurance> getInsuranceList();
 	Insurance* getInsurance(int idNum);
@@ -60,10 +66,16 @@ public:
 	std::vector<Customer> getCustomerList();
 	//Warehouse
 	bool addInventoryToWarehouse(Item item);
+	//Dates
+	int getDay();
+	int getMonth();
+	int getYear();
 
 
 	//Checks for allowed employee credentials, returns bool allowed or denied
-	bool verifyEmployee(std::string username, std::string password);
+	bool verifyEmployee();
+	void employeeLogin();
+	void readEmployeeFile();
 
 	//Class functions
 	void endDay();
@@ -76,8 +88,12 @@ public:
 	std::vector<Purchase> findCustomerPurchases(Customer c);
 	//Formats a chart to display a store's purchases, but would likely be better at Company level
 	std::string displayPurchases(int year);
+	//Date functionalities
+	void updateDate();
+	void datePlusDays(int days);
+	void getTodaysDate();
+	void setupDate();
 
-	
 
 };
 
