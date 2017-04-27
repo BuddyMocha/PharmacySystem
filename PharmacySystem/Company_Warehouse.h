@@ -29,6 +29,13 @@ public:
 	Company(Warehouse warehouse, int day, int month, int year, std::vector<Store> stores, std::vector<Item> items, std::vector<Insurance> insurance);
 	//getters & setters
 	//Store
+	Company();
+
+	std::vector<Store> getStoreChain()
+	{
+		return storeChain;
+	}
+
 	void addStore(Store s);
 	void deleteStore(int id);
 	Store* getStore(int id);

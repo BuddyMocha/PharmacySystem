@@ -1,6 +1,9 @@
 #include "Company_Warehouse.h"
 #include <iomanip>
 
+Company::Company()
+{
+}
 
 Company::Company(Warehouse warehouse, int day, int month, int year, std::vector<Store> stores, std::vector<Item> items, std::vector<Insurance> insurances)
 	:warehouse(warehouse), day(day), month(month), year(year), storeChain(stores), stockableItems(items), insuranceProviders(insurances)

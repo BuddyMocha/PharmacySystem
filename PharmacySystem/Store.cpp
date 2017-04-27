@@ -6,9 +6,10 @@ Insurance::Insurance(int id, float copay)
 
 }
 
-Store::Store(int idNum, int priority)
-	:idNum(idNum), priority(priority) 
+Store::Store(int idNum, std::string streetAddress, std::string city, std::string state, int zipCode, int priority)
+	:idNum(idNum), streetAddress(streetAddress), city(city), state(state), zipCode(zipCode), priority(priority)
 { 
+
 }
 
 Customer::Customer(std::string name, std::string address, std::string phoneNum, Insurance* insurance)

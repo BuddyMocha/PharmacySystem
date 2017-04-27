@@ -35,7 +35,7 @@ using namespace std;
 
 int main()
 {
-
+	Company company;
 
 	vector<addDeleteStoreClass> addDeleteStore;
 	vector<itemReceivedClass> itemReceived;
@@ -94,7 +94,7 @@ int main()
 			cin.clear();
 			cin.ignore(100, '\n');
 		}
-
+		
 
 		switch (choice)
 		{
@@ -165,7 +165,7 @@ int main()
 			items = Items(items, itemsSeq);
 			reports = Reports(reports, reportsSeq);//processes reports.txt
 
-			addStore2program(addDeleteStore);
+			addStore2program(addDeleteStore, company);
 
 			//Date plus one day
 			datePlusDays(&date, 1);

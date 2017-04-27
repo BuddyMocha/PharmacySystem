@@ -37,12 +37,17 @@ private:
 	int idNum, priority;
 	std::vector<Item> inventory;
 
+	std::string streetAddress;
+	std::string city;
+	std::string state;
+	int zipCode;
+
 	//Holds the number of items requested to be restocked the next day
 	std::vector<Item> currentOrder;
 	std::vector<Purchase> transactions;
 public:
 	//Constructor for new store
-	Store(int idNum, int priority);
+	Store(int idNum, std::string streetAddress, std::string city, std::string state, int zipCode, int priority);
 
 	//Getters and setters for private vars
 	//ID
