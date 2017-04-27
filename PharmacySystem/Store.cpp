@@ -11,6 +11,8 @@ Store::Store(int idNum, int priority)
 { 
 }
 
+
+
 Customer::Customer(std::string name, std::string address, std::string phoneNum, Insurance* insurance)
 	:name(name), address(address), phoneNum(phoneNum), insurance(insurance)
 {
