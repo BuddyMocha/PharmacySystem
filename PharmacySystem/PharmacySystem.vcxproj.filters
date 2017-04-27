@@ -66,6 +66,9 @@
     <ClInclude Include="batch2program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PharmacyFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -155,6 +155,7 @@
     <ClInclude Include="ItemReceived.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="Item_ExpDate.h" />
+    <ClInclude Include="PharmacyFunctions.h" />
     <ClInclude Include="Reports.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StoreUpdate.h" />
