@@ -28,6 +28,7 @@ struct Item
 	std::vector<ExpirationDate> expirationDates;
 	//Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates);
 	Item(int idNum, int defaultStoreQuantity, int requiredStock, int restockQuantity);
+	Item(int idNum, int initialAmount, float price, int requiredRestock, int restockQuantity, std::vector<ExpirationDate> expDate);
 	std::string allDataToString();
 	std::string toString();
 	std::string checkoutString();
