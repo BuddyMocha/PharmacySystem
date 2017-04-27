@@ -57,7 +57,7 @@ void Store::addItemtoInv(Item item){
 	{
 		if (inventory[x].idNum = item.idNum)
 		{
-			//Item addition canceled because another item has the same ID. Could merge the items with the item.addQuantity() method if wanted
+			inventory[x].addQuantity(item);
 			return;
 		}
 	}

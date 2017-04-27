@@ -51,6 +51,8 @@ public:
 	void createCustomer();
 	Customer* getCustomer(std::string phoneNum);
 	std::vector<Customer> getCustomerList();
+	//Warehouse
+	bool addInventoryToWarehouse(Item item);
 
 
 	//Checks for allowed employee credentials, returns bool allowed or denied

@@ -8,6 +8,7 @@ Company::Company(Warehouse warehouse, int day, int month, int year, std::vector<
 
 	customers = std::vector<Customer>();
 }
+
 //Adds a new stockable item
 void Company::addItemToStock(Item i)
 {
@@ -21,6 +22,9 @@ void Company::addItemToStock(Item i)
 	};
 	stockableItems.push_back(i);
 }
+
+
+
 //Deletes an allowed stockable item
 void Company::deleteItemFromStock(int id)
 {
@@ -64,6 +68,28 @@ Item* Warehouse::getItem(int idNum)
 	}
 	return nullptr;
 }
+
+bool Company::addInventoryToWarehouse(Item item)
+{
+	if (isItemInStock(item.idNum))
+	{
+		for (int x = 0; x < warehouse.inventory.size(); x++)
+		{
+			if (warehouse.inventory[x].idNum = item.idNum)
+			{
+				warehouse.inventory[x].addQuantity(item);
+				return true;
+			}
+		}
+		warehouse.inventory.push_back(item);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 //Sends items from the warehouse to a store, will be done overnight so need a log to save data
 void Company::sendItems(std::vector<Item> order, Store destination)
 {
