@@ -63,6 +63,9 @@
     <ClInclude Include="Reports.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="batch2program.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

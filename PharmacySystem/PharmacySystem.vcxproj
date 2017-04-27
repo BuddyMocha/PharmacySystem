@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddDeleteStore.h" />
+    <ClInclude Include="batch2program.h" />
     <ClInclude Include="checkFile.h" />
     <ClInclude Include="checkHeader.h" />
     <ClInclude Include="checkTrailer.h" />

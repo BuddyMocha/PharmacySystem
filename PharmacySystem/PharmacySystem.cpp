@@ -28,7 +28,7 @@ using namespace std;
 #include "Items.h"
 #include "Reports.h"//function for processing reports.txt
 
-//#include "vendor2warehouse.h";
+#include "batch2program.h";
 
 //Look at my employee struct already created in Store.h
 //struct Employee
@@ -364,6 +364,8 @@ int main()
 			items = Items(items, itemsSeq);
 			reports = Reports(reports, reportsSeq);//processes reports.txt
 
+			addStore2program(addDeleteStore);
+
 			//Date plus one day
 			datePlusDays(&date, 1);
 			//Change current date to new date
@@ -391,7 +393,6 @@ int main()
 	
 	return 0;
 }
-*/
 
 /*
 //Tester main
