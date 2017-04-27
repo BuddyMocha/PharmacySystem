@@ -56,7 +56,6 @@ int main()
 
 	int choice;
 	bool systemOn = true;
-	Company company;
 	//employee login here
 
 	company.employeeLogin();

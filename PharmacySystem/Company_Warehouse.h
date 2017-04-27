@@ -33,7 +33,6 @@ public:
 	Company();
 	//getters & setters
 	//Store
-	Company();
 
 	std::vector<Store> getStoreChain()
 	{

@@ -12,11 +12,6 @@ Company::Company(Warehouse warehouse, int day, int month, int year, std::vector<
 	customers = std::vector<Customer>();
 }
 
-Company::Company()
-{
-
-}
-
 //Adds a new stockable item
 void Company::addItemToStock(Item i)
 {
