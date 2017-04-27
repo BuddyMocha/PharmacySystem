@@ -60,6 +60,13 @@ Item::Item(int idNum, int defaultItemQuantity, int requiredStock, int restockQua
 	quantity = -1;
 }
 
+Item::Item(int idNum, int quantity ,float price, int requiredRestock, int restockQuantity, std::vector<ExpirationDate> expDate)
+	:idNum(idNum), quantity(quantity), price(price), requiredRestock(requiredRestock), expirationDates(expDate)
+{
+	name = "";
+	dosage = -1;
+}
+
 
 
 //Outputs all item data, including expDates
