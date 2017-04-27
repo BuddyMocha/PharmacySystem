@@ -18,11 +18,16 @@ struct ExpirationDate
 struct Item
 {
 	float price;
-	int idNum, quantity;
+	//MUST STILL IMPLIMENT
+	std::string name;
+	int dosage;
+	//
+	int idNum, quantity, defaultStoreQuantity;
 	int requiredRestock;    //The quantity at which the item must be refilled
 	int restockQuantity;    //The quantity to refill the item to
 	std::vector<ExpirationDate> expirationDates;
-	Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates);
+	//Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates);
+	Item(int idNum, int defaultStoreQuantity, int requiredStock, int restockQuantity);
 	std::string allDataToString();
 	std::string toString();
 	std::string checkoutString();

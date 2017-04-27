@@ -69,6 +69,7 @@ Item* Warehouse::getItem(int idNum)
 	return nullptr;
 }
 
+//Takes an item and adds it to the warehouse
 bool Company::addInventoryToWarehouse(Item item)
 {
 	if (isItemInStock(item.idNum))

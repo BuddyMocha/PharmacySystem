@@ -2,7 +2,9 @@
 //Constructor for ExpDate
 ExpirationDate::ExpirationDate(int day, int month, int year, int quantity)
 	:day(day), month(month), year(year), quantity(quantity)
-{}
+{
+}
+
 //Used in outputting item data
 std::string ExpirationDate::toString()
 {
@@ -47,11 +49,19 @@ bool ExpirationDate::operator ==(const ExpirationDate expDate)
 	}
 	return false;
 }
+
 //Item constructor
-Item::Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates)
-	:idNum(idNum), quantity(quantity), price(price), requiredRestock(requiredStock), restockQuantity(restockQuantity), expirationDates(expDates)
+Item::Item(int idNum, int defaultItemQuantity, int requiredStock, int restockQuantity)
+	:idNum(idNum), defaultStoreQuantity(defaultStoreQuantity), requiredRestock(requiredStock), restockQuantity(restockQuantity)
 {
+	price = (float) -1;
+	name = "";
+	dosage = -1;
+	quantity = -1;
 }
+
+
+
 //Outputs all item data, including expDates
 std::string Item::allDataToString()
 {
