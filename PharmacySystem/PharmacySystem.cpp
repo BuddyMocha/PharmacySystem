@@ -17,6 +17,19 @@
 
 using namespace std;
 
+#include "checkFile.h"//checks for existing file AND empty file
+#include "checkHeader.h"//checks header and rejects text file if conditions not met
+#include "checkTrailer.h"//checks trailer
+
+#include "AddDeleteStore.h";
+#include "StoreUpdate.h"
+#include "ItemReceived.h"
+#include "VendorOrder.h"//function for processing vendororder.txt
+#include "Items.h"
+#include "Reports.h"//function for processing reports.txt
+
+//#include "vendor2warehouse.h";
+
 //Look at my employee struct already created in Store.h
 //struct Employee
 //{
@@ -223,6 +236,23 @@ void sampleProgram()
 
 int main()
 {
+	vector<addDeleteStoreClass> addDeleteStore;
+	vector<itemReceivedClass> itemReceived;
+	vector<storeUpdateClass> storeUpdate;
+	vector<vendorOrderClass> vendorOrder;
+	vector<itemsClass> items;
+	vector<reportsClass> reports;//vector or reports class that will hold yearlySales.txt information
+
+	int addDeleteStoreSeq = 102;
+	int storeUpdateSeqCREATESTORE = 52;
+	int storeUpdateSeqINVENTORYREVIEW = 52;
+	int storeUpdateSeqONLINEREQUEST = 52;
+	int itemReceivedSeq = 9999;
+	int itemReceivedSeqDELSTORE = 9999;
+	int itemsSeq = 9999;
+	int vendorOrderSeq = 5001;
+	int reportsSeq = 0;//expected sequence number of reports.txt (number will be increased by yearlySales.h)
+
 	int choice;
 	bool systemOn = true;
 
@@ -324,6 +354,16 @@ int main()
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
 
+			addDeleteStore = AddDeleteStore(addDeleteStore, addDeleteStoreSeq);
+			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
+			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqINVENTORYREVIEW, "storeupdateINVENTORYREVIEW.txt");
+			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
+			itemReceived = ItemReceived(itemReceived, itemReceivedSeq, "itemreceived.txt");
+			itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
+			vendorOrder = VendorOrder(vendorOrder, vendorOrderSeq);
+			items = Items(items, itemsSeq);
+			reports = Reports(reports, reportsSeq);//processes reports.txt
+
 			//Date plus one day
 			datePlusDays(&date, 1);
 			//Change current date to new date
@@ -351,13 +391,14 @@ int main()
 	
 	return 0;
 }
+*/
 
 /*
 //Tester main
 //Does NOT use namespace std, will need slight edits
 
 
-
+/*
 int main()
 {
 	Warehouse testStock;

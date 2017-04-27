@@ -145,12 +145,21 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddDeleteStore.h" />
+    <ClInclude Include="checkFile.h" />
+    <ClInclude Include="checkHeader.h" />
+    <ClInclude Include="checkTrailer.h" />
     <ClInclude Include="Company_Warehouse.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="ItemReceived.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="Item_ExpDate.h" />
+    <ClInclude Include="Reports.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StoreUpdate.h" />
     <ClInclude Include="Store_Customer_Insurance_Purchase.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="VendorOrder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PharmacySystem.cpp" />
