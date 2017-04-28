@@ -144,6 +144,10 @@ Item Item::removeQuantity(int amount)
 			{
 				expDates.push_back(ExpirationDate(expirationDates[x].day, expirationDates[x].month, expirationDates[x].year, amount));
 				expirationDates[x].quantity -= amount;
+				if (expirationDates[x].quantity == 0)
+				{
+					expirationDates.erase(expirationDates.begin() + x);
+				}
 				amount = 0;
 			}
 			else

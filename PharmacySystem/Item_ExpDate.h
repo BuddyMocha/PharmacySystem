@@ -31,7 +31,7 @@ struct Item
 	Item(int idNum, int defaultStoreQuantity, int requiredStock, int restockQuantity);
 	Item(int idNum, int initialAmount, float price, int requiredRestock, int restockQuantity, std::vector<ExpirationDate> expDate);
 	Item(int vendorCode, int idNum, int quantity, std::vector<ExpirationDate> expDate);
-
+	Item() {}
 	std::string allDataToString();
 	std::string toString();
 	std::string checkoutString();

@@ -110,37 +110,35 @@ bool Company::addInventoryToWarehouse(Item item)
 }
 
 //Sends items from the warehouse to a store, will be done overnight so need a log to save data
-void Company::sendItems(std::vector<Item> order, Store *destination)
+void Company::sendItems(int idNum, int quantity, Store* destination)
 {
-	std::vector<Item> completedOrder;
-	for (int x = 0; x < order.size(); x++)
+	Item order;
+
+	Item* warehouseItem = warehouse.getItem(idNum);
+	if (warehouseItem != nullptr)
 	{
-		Item* warehouseItem = warehouse.getItem(order[x].idNum);
-		if (warehouseItem != nullptr)
+		if (warehouseItem->quantity >= quantity)
 		{
-			if (warehouseItem->quantity >= order[x].quantity)
-			{
-				completedOrder.push_back(warehouseItem->removeQuantity(order[x].quantity));
-			}
-			else if (warehouseItem->quantity > 0)
-			{
-				completedOrder.push_back(warehouseItem->removeQuantity(warehouseItem->quantity));
-				//Log not sufficient quantity, order from vendor
-			}
-			else
-			{
-				//Log no item quantity, order from vendor
-			}
+			order = warehouseItem->removeQuantity(quantity);
+		}
+		else if (warehouseItem->quantity > 0)
+		{
+			order = warehouseItem->removeQuantity(warehouseItem->quantity);
+			//Log not sufficient quantity, order from vendor
 		}
 		else
 		{
-			//Log that item was not found in warehouse
+			//Log no item quantity, order from vendor
+			return;
 		}
 	}
-	for (int x = 0; x < completedOrder.size(); x++)
+	else
 	{
-		destination.addItemtoInv(completedOrder[x]);
+		//Log that item was not found in warehouse
+		return;
 	}
+	
+	destination->addItemtoInv(order);
 }
 
 //Adds employee with specified argument
@@ -658,4 +656,19 @@ int Company::getMonth()
 int Company::getYear()
 {
 	return year;
+}
+std::string Company::removeExpiredItems()
+{
+	std::string output;
+	std::string expiredItems = "";
+	for (int x = 0; x < storeChain.size(); x++)
+	{
+		expiredItems = storeChain[x].removeExpiredItems(day, month, year);
+		if (expiredItems != "")
+		{
+			output += "Store ID: " + storeChain[x].getID();
+			output += "\n" + expiredItems + "\n";
+		}
+	}
+	return output;
 }

@@ -142,7 +142,7 @@ int main()
 			cout << "********************************\n";
 			cout << "Please input the store ID for the items you wish to edit." << endl;
 			cin >> choice;
-			company.getStore(choice);
+			company.getStore(choice)->editItemData();
 
 			// rest of code here
 			sampleProgram();
@@ -158,7 +158,7 @@ int main()
 			cout << endl;
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
-
+			cout << company.removeExpiredItems() << endl;
 			addDeleteStore = AddDeleteStore(addDeleteStore, addDeleteStoreSeq);
 			
 			itemReceived = ItemReceived(itemReceived, itemReceivedSeq, "itemreceived.txt");
