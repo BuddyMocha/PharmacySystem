@@ -35,7 +35,6 @@ using namespace std;
 
 int main()
 {
-	
 	Company company;
 	/*
 	Customer c((std::string)"Bob", (std::string) "Address", (std::string)"1231231232", new Insurance(1, "Blue Cross", .10));
@@ -52,6 +51,9 @@ int main()
 	s.addItemtoInv(Item(1, 2, 2.00f, 10, 20, exp));
 	company.addStore(s);
 	*/
+	ofstream fout("ERRORS.TXT");
+	fout.clear();
+
 	vector<addDeleteStoreClass> addDeleteStore;
 	vector<itemReceivedClass> itemReceived;
 	vector<storeUpdateClass> storeUpdate;

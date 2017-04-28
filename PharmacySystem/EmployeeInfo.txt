@@ -1,4 +1,3 @@
-Will,William,Parker
 Daniel,Daniel,Neamtu
 Bradley,Bradley,Moore
 Edward,Edward,Stark
