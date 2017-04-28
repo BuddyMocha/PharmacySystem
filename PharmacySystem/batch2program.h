@@ -321,22 +321,30 @@ void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company)
 {
 	vector<Item> items;
-
+	vector<ExpirationDate> expDates;
 	for (int i = 0; i < addDeleteStore.size(); i++)
 	{
 		if (addDeleteStore[i].getActionCode() == 'D')
 		{
 			for (int j = 0; j < company.getStoreChain().size(); j++)
 			{
-				if (addDeleteStore[i].getStoreID() == company.getJustAStore(j).getID())
+				if (addDeleteStore[i].getStoreID() == company.getStore(j)->getID())
 				{
-					/*
-					items = company.getJustAStore.getItemList();
+					items = company.getStore(j)->getItemList();
 
 					for (int h = 0; h < items.size(); h++)
 					{
-						items[h].quantity;
-					}*/
+						items[h].vendorCode;
+						items[h].idNum;
+						expDates = items[h].expirationDates;
+						for (int g = 0; g < expDates.size(); x++)
+						{
+							expDates[g].month;
+							expDates[g].day;
+							expDates[g].year;
+							expDates[g].quantity;
+						}
+					}
 
 					company.deleteStore(company.getJustAStore(j).getID());
 				}
