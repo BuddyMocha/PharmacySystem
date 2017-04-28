@@ -109,6 +109,8 @@ int main()
 			cin.ignore(100, '\n');
 		}
 
+		vector<Store> stores;
+
 		switch (choice)
 		{
 		case 1:
@@ -197,7 +199,13 @@ int main()
 			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
 
 			warehouse2store(storeUpdate, company);
-
+			/*
+			stores = company.getStoreChain();
+			for (int i = 0; i < stores.size(); i++)
+			{
+				cout << stores[i].getID() << endl;
+			}
+			*/
 			deleteStore(addDeleteStore, company);
 
 			//Date plus one day
