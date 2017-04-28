@@ -81,8 +81,6 @@ int main()
 	company.getTodaysDate();
 	company.setupDate();
 
-	vector<Item> inventory;
-
 	while (systemOn != false)
 	{
 		cout << endl;
@@ -172,6 +170,14 @@ int main()
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
 			cout << company.removeExpiredItems() << endl;
+
+			addDeleteStore.clear();
+			itemReceived.clear();
+			vendorOrder.clear();
+			items.clear();
+			reports.clear();
+			storeUpdate.clear();
+
 			addDeleteStore = AddDeleteStore(addDeleteStore, addDeleteStoreSeq);
 			
 			itemReceived = ItemReceived(itemReceived, itemReceivedSeq, "itemreceived.txt");
@@ -183,12 +189,6 @@ int main()
 			addStoreAndItems2company(addDeleteStore, company);
 			items2warehouse(itemReceived, company);
 
-			inventory = company.getWarehouse().inventory;
-
-			cout << endl;
-			cout << inventory.size() << endl << endl;
-
-
 			writeStoreUpdateCREATESTORE(addDeleteStore, storeUpdateSeqCREATESTORE);
 
 			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
@@ -196,6 +196,8 @@ int main()
 			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
 
 			warehouse2store(storeUpdate, company);
+
+			deleteStore(addDeleteStore, company);
 
 			//Date plus one day
 			company.datePlusDays(1);

@@ -20,7 +20,7 @@ private:
 public:
 	//Constructor for new store
 	Store(int idNum, std::string streetAddress, std::string city, std::string state, int zipCode, int priority);
-
+	Store();
 	//Getters and setters for private vars
 	//ID
 	int getID();

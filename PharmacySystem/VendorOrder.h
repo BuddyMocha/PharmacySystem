@@ -98,6 +98,8 @@ vector<vendorOrderClass> VendorOrder(vector<vendorOrderClass> vendorOrder, int&S
 
 vector<vendorOrderClass> VendorOrderInput(vector<vendorOrderClass> vendorOrders, vector<char> file, string name, int loc, int line)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char vendorCode[4];
 	char itemCode[9];
 	char quantityOrder[10];
@@ -112,7 +114,7 @@ vector<vendorOrderClass> VendorOrderInput(vector<vendorOrderClass> vendorOrders,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return vendorOrders;
 				}
@@ -125,7 +127,7 @@ vector<vendorOrderClass> VendorOrderInput(vector<vendorOrderClass> vendorOrders,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return vendorOrders;
 				}
@@ -138,7 +140,7 @@ vector<vendorOrderClass> VendorOrderInput(vector<vendorOrderClass> vendorOrders,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return vendorOrders;
 				}
@@ -150,7 +152,7 @@ vector<vendorOrderClass> VendorOrderInput(vector<vendorOrderClass> vendorOrders,
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return vendorOrders;
 		}
@@ -161,14 +163,14 @@ vector<vendorOrderClass> VendorOrderInput(vector<vendorOrderClass> vendorOrders,
 		{
 			if (loc + 8 != file.size())
 			{
-				cout << name << ": error found in trailer format" << endl;
+				fout << name << ": error found in trailer format" << endl;
 
 				return vendorOrders;
 			}
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return vendorOrders;
 		}

@@ -40,8 +40,6 @@ void addStoreAndItems2company(vector<addDeleteStoreClass> addDeleteStore, Compan
 			}
 		}
 	}
-
-	//addDeleteStore.clear();
 }
 
 void items2warehouse(vector<itemReceivedClass>&itemReceived, Company&company)
@@ -57,16 +55,12 @@ void items2warehouse(vector<itemReceivedClass>&itemReceived, Company&company)
 
 	for (int i = 0; i < itemReceived.size(); i++)
 	{
-		cout << "HELLO" << itemReceived[i].getItemCode() << endl;
-
 		vendorCode = itemReceived[i].getVendorCode();
 		itemCode = itemReceived[i].getItemCode();
 		quantity = itemReceived[i].getQuantityReceived();
 		expirationDay = itemReceived[i].getExpirationDay();
 		expirationMonth = itemReceived[i].getExpirationMonth();
 		expirationYear = itemReceived[i].getExpirationYear();
-
-		cout << "THE YEAR ON ITS OWN: " << expirationYear << endl;
 
 		ExpirationDate expdate(expirationDay, expirationMonth, expirationYear, quantity);
 
@@ -80,7 +74,7 @@ void items2warehouse(vector<itemReceivedClass>&itemReceived, Company&company)
 	}
 }
 
-void writeStoreUpdateCREATESTORE(vector<addDeleteStoreClass>&addDeleteStore, int seq)
+void writeStoreUpdateCREATESTORE(vector<addDeleteStoreClass> addDeleteStore, int seq)
 {
 	int line = 0;
 
@@ -310,27 +304,43 @@ void writeStoreUpdateCREATESTORE(vector<addDeleteStoreClass>&addDeleteStore, int
 			}
 		}
 	}
-
-	addDeleteStore.clear();
 }
 
 void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 {
-	int storeID;
-	int priorityLevel;
-	int itemCode;
-	int quantity;
-
 	Store *store;
 
 	for (int i = 0; i < storeUpdate.size(); i++)
 	{
 		store = company.getStore(storeUpdate[i].getStoreID());
 
-		cout << storeUpdate[i].getItemCode() << "DANIEL" << endl;
-
 		company.sendItems(storeUpdate[i].getItemCode(), storeUpdate[i].getRequestedQuantity(), store);
-		cout << store->getItem(storeUpdate[i].getItemCode())->toString() << endl;
-		cout << store->getItem(storeUpdate[i].getItemCode())->toString() << endl;
+	}
+}
+
+void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company)
+{
+	vector<Item> items;
+
+	for (int i = 0; i < addDeleteStore.size(); i++)
+	{
+		if (addDeleteStore[i].getActionCode() == 'D')
+		{
+			for (int j = 0; j < company.getStoreChain().size(); j++)
+			{
+				if (addDeleteStore[i].getStoreID() == company.getJustAStore(j).getID())
+				{
+					/*
+					items = company.getJustAStore.getItemList();
+
+					for (int h = 0; h < items.size(); h++)
+					{
+						items[h].quantity;
+					}*/
+
+					company.deleteStore(company.getJustAStore(j).getID());
+				}
+			}
+		}
 	}
 }

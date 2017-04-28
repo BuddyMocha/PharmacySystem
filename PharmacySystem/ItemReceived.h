@@ -125,6 +125,8 @@ vector<itemReceivedClass> ItemReceived(vector<itemReceivedClass> itemReceived, i
 
 vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsReceived, vector<char> file, string name, int loc, int line)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char vendorCode[4];
 	char itemCode[9];
 	char quantityReceived[10];
@@ -143,7 +145,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return itemsReceived;
 				}
@@ -156,7 +158,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return itemsReceived;
 				}
@@ -169,7 +171,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return itemsReceived;
 				}
@@ -182,7 +184,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return itemsReceived;
 				}
@@ -194,7 +196,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return itemsReceived;
 				}
@@ -206,7 +208,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return itemsReceived;
 				}
@@ -219,7 +221,7 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return itemsReceived;
 		}
@@ -230,14 +232,14 @@ vector<itemReceivedClass> ItemReceivedInput(vector<itemReceivedClass> itemsRecei
 		{
 			if (loc + 8 != file.size())
 			{
-				cout << name << ": error found in trailer format" << endl;
+				fout << name << ": error found in trailer format" << endl;
 
 				return itemsReceived;
 			}
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return itemsReceived;
 		}

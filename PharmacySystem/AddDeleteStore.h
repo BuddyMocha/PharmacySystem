@@ -239,6 +239,8 @@ vector<char> eraseSpace(vector<char> Vector)
 
 vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addDeleteStores, vector<char> file, string name, int loc, int&line, int&lineItem)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char actionCode;
 	char storeID[5];
 	vector<char> streetAddress;
@@ -259,7 +261,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 		{
 			if (!isdigit(file[loc + 1 + i]))
 			{
-				cout << name << ": error - non-digit found on line " << line << endl;
+				fout << name << ": error - non-digit found on line " << line << endl;
 
 				return addDeleteStores;
 			}
@@ -273,7 +275,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 			{
 				if (file[loc + 1 + i] != ' ')
 				{
-					cout << name << ": error - non-alphabetic letter or non-digit found on line " << line << endl;
+					fout << name << ": error - non-alphabetic letter or non-digit found on line " << line << endl;
 
 					return addDeleteStores;
 				}
@@ -290,7 +292,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 			{
 				if (file[loc + 1 + i] != ' ')
 				{
-					cout << name << ": error - non-alphabetic letter found on line " << line << endl;
+					fout << name << ": error - non-alphabetic letter found on line " << line << endl;
 
 					return addDeleteStores;
 				}
@@ -306,7 +308,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 			{
 				if (file[loc + 1 + i] != ' ')
 				{
-					cout << name << ": error - non-alphabetic letter found on line " << line << endl;
+					fout << name << ": error - non-alphabetic letter found on line " << line << endl;
 
 					return addDeleteStores;
 				}
@@ -320,7 +322,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 		{
 			if (!isdigit(file[loc + 1 + i]))
 			{
-				cout << name << ": error - non-digit found on line " << line << endl;
+				fout << name << ": error - non-digit found on line " << line << endl;
 
 				return addDeleteStores;
 			}
@@ -332,7 +334,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 		{
 			if (!isdigit(file[loc + 1 + i]))
 			{
-				cout << name << ": error - non-digit found on line " << line << endl;
+				fout << name << ": error - non-digit found on line " << line << endl;
 
 				return addDeleteStores;
 			}
@@ -346,7 +348,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 		{
 			if (file[loc + 61] != 'I')
 			{
-				cout << name << ": ERROR - I record not found after an A record" << endl;
+				fout << name << ": ERROR - I record not found after an A record" << endl;
 			}
 		}
 	}
@@ -356,7 +358,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 		{
 			if (loc + 8 != file.size())
 			{
-				cout << name << ": error found in trailer format" << endl;
+				fout << name << ": error found in trailer format" << endl;
 
 				return addDeleteStores;
 			}
@@ -379,7 +381,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 			}
 			else
 			{
-				cout << name << ": ERROR - I action code found not after A" << endl;
+				fout << name << ": ERROR - I action code found not after A" << endl;
 
 				return addDeleteStores;
 			}
@@ -397,7 +399,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 			}
 			else
 			{
-				cout << name << ": ERROR - C action code found not after I" << endl;
+				fout << name << ": ERROR - C action code found not after I" << endl;
 
 				line--;
 
@@ -405,7 +407,7 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 			}
 		}
 
-		cout << name << ": error found on line " << line << endl;
+		fout << name << ": error found on line " << line << endl;
 
 		return addDeleteStores;
 	}
@@ -415,6 +417,8 @@ vector<addDeleteStoreClass> AddDeleteStoreInput(vector<addDeleteStoreClass> addD
 
 vector<addDeleteStoreClass> AddItems(vector<addDeleteStoreClass> addDeleteStores, vector<char> file, string name, int loc, int line)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char itemCode[9];
 	char defaultQuantity[10];
 	char reorderLevel[10];
@@ -426,7 +430,7 @@ vector<addDeleteStoreClass> AddItems(vector<addDeleteStoreClass> addDeleteStores
 	{
 		if (!isdigit(file[loc + 1 + i]))
 		{
-			cout << name << ": error - non-digit found on line " << line << endl;
+			fout << name << ": error - non-digit found on line " << line << endl;
 
 			return addDeleteStores;
 		}
@@ -438,7 +442,7 @@ vector<addDeleteStoreClass> AddItems(vector<addDeleteStoreClass> addDeleteStores
 	{
 		if (!isdigit(file[loc + 1 + i]))
 		{
-			cout << name << ": error - non-digit found on line " << line << endl;
+			fout << name << ": error - non-digit found on line " << line << endl;
 
 			return addDeleteStores;
 		}
@@ -450,7 +454,7 @@ vector<addDeleteStoreClass> AddItems(vector<addDeleteStoreClass> addDeleteStores
 	{
 		if (!isdigit(file[loc + 1 + i]))
 		{
-			cout << name << ": error - non-digit found on line " << line << endl;
+			fout << name << ": error - non-digit found on line " << line << endl;
 
 			return addDeleteStores;
 		}
@@ -462,7 +466,7 @@ vector<addDeleteStoreClass> AddItems(vector<addDeleteStoreClass> addDeleteStores
 	{
 		if (!isdigit(file[loc + 1 + i]))
 		{
-			cout << name << ": error - non-digit found on line " << line << endl;
+			fout << name << ": error - non-digit found on line " << line << endl;
 
 			return addDeleteStores;
 		}
@@ -477,6 +481,8 @@ vector<addDeleteStoreClass> AddItems(vector<addDeleteStoreClass> addDeleteStores
 
 int checkControl(vector<char> file, string name, int lineItem, int loc)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char contChar[4];
 
 	if (file[loc + 1] == 'C' && file[loc + 2] == ' ')
@@ -485,7 +491,7 @@ int checkControl(vector<char> file, string name, int lineItem, int loc)
 		{
 			if (!isdigit(file[loc + 3 + i]))
 			{
-				cout << name << ": CONTROL ERROR - non-digit found in control number" << endl;
+				fout << name << ": CONTROL ERROR - non-digit found in control number" << endl;
 
 				return 0;
 			}
@@ -495,14 +501,14 @@ int checkControl(vector<char> file, string name, int lineItem, int loc)
 
 		if (atoi(contChar) != lineItem)
 		{
-			cout << name << ": CONTROL ERROR - number of item records does not match control number" << endl;
+			fout << name << ": CONTROL ERROR - number of item records does not match control number" << endl;
 
 			return 0;
 		}
 	}
 	else
 	{
-		cout << name << ": CONTROL ERROR - format incorrect or control doesn't exist" << endl;
+		fout << name << ": CONTROL ERROR - format incorrect or control doesn't exist" << endl;
 
 		return 0;
 	}
