@@ -234,6 +234,15 @@ void Store::editItemData()
 	return;
 }
 
+std::string Store::getPurchaseHistory()
+{
+	std::string input;
+	for (int x = 0; x < transactions.size(); x++)
+	{
+		input += transactions[x].toString() + "\n";
+	}
+	return input;
+}
 
 
 

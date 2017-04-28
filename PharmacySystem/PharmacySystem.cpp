@@ -131,7 +131,7 @@ int main()
 			cout << "*****Historical Sales Info******\n";
 			cout << "********************************\n";
 			// rest of code here
-			sampleProgram();
+			company.historicalSales();
 			break;
 		case 4:
 			cout << endl;

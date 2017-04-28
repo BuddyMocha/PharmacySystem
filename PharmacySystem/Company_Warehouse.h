@@ -88,6 +88,7 @@ public:
 	//Finds all purchases related to a customer
 	std::vector<Purchase*> findCustomerPurchases(std::string phoneNum);
 	void customerReportGen();
+	void historicalSales();
 	//Formats a chart to display a store's purchases, but would likely be better at Company level
 	std::string displayPurchases(int year);
 	//Date functionalities

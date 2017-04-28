@@ -475,9 +475,9 @@ void Company::transaction()
 	{
 		std::vector<Item> singlePurchase = { purchase[x] };
 		if(referral)
-		currentStore->getItem(purchase[x].idNum)->purchases.insert((currentStore->getItem(purchase[x].idNum)->purchases.begin()), Purchase(referral, day, month, year, customer, purchase[x].price * purchase[x].quantity *(1 - customer->insurance->copay) * .95, singlePurchase));
+		getItem(purchase[x].idNum)->purchases.insert((currentStore->getItem(purchase[x].idNum)->purchases.begin()), Purchase(referral, day, month, year, customer, purchase[x].price * purchase[x].quantity *(1 - customer->insurance->copay) * .95, singlePurchase));
 		else
-		currentStore->getItem(purchase[x].idNum)->purchases.insert((currentStore->getItem(purchase[x].idNum)->purchases.begin()), Purchase(referral, day, month, year, customer, purchase[x].price * purchase[x].quantity *(1 - customer->insurance->copay), singlePurchase));
+		getItem(purchase[x].idNum)->purchases.insert((currentStore->getItem(purchase[x].idNum)->purchases.begin()), Purchase(referral, day, month, year, customer, purchase[x].price * purchase[x].quantity *(1 - customer->insurance->copay), singlePurchase));
 	}
 	return;
 	//send purchase to list
@@ -702,7 +702,6 @@ void Company::customerReportGen()
 	std::cout << "Please input the phone number of the customer you wish to see the data for." << std::endl;
 	while (input != "x")
 	{
-		std::cin >> input;
 		if (getCustomer(input) != nullptr)
 		{
 			input = getCustomer(input)->getPurchaseHistory();
@@ -712,6 +711,59 @@ void Company::customerReportGen()
 		else if(input != "x")
 		{
 			std::cout << "Customer not found, please try again or input \"x\" to exit." << std::endl;
+
+		}
+	}
+}
+
+void Company::historicalSales()
+{
+	std::stringstream stream;
+	std::string input;
+	int id;
+	while (input != "x")
+	{
+		std::cout << "Input 1 to see a store's historical sales, 2 to see a specific item's, or \"x\" to exit." << std::endl;
+		stream.clear();
+		std::cin >> input;
+		stream.str(input);
+		if (input == "1")
+		{
+			while (input != "x")
+			{
+				std::cout << "Please input the ID number for the store you wish to see." << std::endl;
+				std::cin >> input;
+				if (stream >> id && getStore(id) != nullptr)
+				{
+					std::cout << getStore(id)->getPurchaseHistory();
+					std::cout << "Input another store's ID number, or \"x\" to exit." << std::endl;
+				}
+				else if(input != "x")
+				{
+					std::cout << "Store not found, please try again, or input \"x\" to exit." << std::endl;
+				}
+			}
+		}
+		else if (input == "2")
+		{
+			while (input != "x")
+			{
+				std::cout << "Please input the ID number for the item you wish to see." << std::endl;
+				std::cin >> input;
+				if (stream >> id && getItem(id) != nullptr)
+				{
+					std::cout << getItem(id)->getPurchaseHistory();
+					std::cout << "Input another item's ID number, or \"x\" to exit." << std::endl;
+				}
+				else if (input != "x")
+				{
+					std::cout << "Store not found, please try again, or input \"x\" to exit." << std::endl;
+				}
+			}
+		}
+		else if (input != "x")
+		{
+			std::cout << "Invalid input, please try again." << std::endl;
 
 		}
 	}

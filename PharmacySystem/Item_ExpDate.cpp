@@ -210,4 +210,15 @@ std::string Customer::getPurchaseHistory()
 	return output.str();
 }
 
+std::string Item::getPurchaseHistory()
+{
+	std::stringstream output;
+	output << "Customer: " << toString() << "\n";
+	for (int x = 0; x < purchases.size(); x++)
+	{
+		output << (purchases[x]).toString();
+	}
+	return output.str();
+}
+
 

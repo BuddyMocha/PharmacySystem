@@ -41,7 +41,7 @@ public:
 	//Purchases
 	void addPurchase(Purchase p);
 	std::vector<Purchase>& getPurchaseList();
-
+	std::string getPurchaseHistory();
 	//Class Functions
 	void editItemData();
 	//Ran daily to remove expired items, and will return a string to log removed items

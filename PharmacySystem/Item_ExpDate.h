@@ -40,6 +40,7 @@ struct Item
 	std::string checkoutString();
 	Item removeQuantity(int quantity);
 	void addQuantity(Item stock);
+	std::string getPurchaseHistory();
 };
 
 struct Insurance
