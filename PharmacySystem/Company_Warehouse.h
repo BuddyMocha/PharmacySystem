@@ -48,7 +48,7 @@ public:
 	bool isItemInStock(int id);
 	std::vector<Item> getItemList();
 	Item* getItem(int id);
-	void sendItems(std::vector<Item> order, Store destination);
+	void sendItems(int idNum, int quantity, Store* destination);
 	//Employee
 	std::vector<Employee> getEmployees();
 	void addEmployee(Employee e);
@@ -80,6 +80,7 @@ public:
 	//Class functions
 	void endDay();
 	void beginDay();
+	std::string removeExpiredItems();
 
 	//Major Transaction method, likely will have sub-methods
 	void transaction();

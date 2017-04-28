@@ -74,6 +74,6 @@ public:
 	//Class Functions
 	void editItemData();
 	//Ran daily to remove expired items, and will return a string to log removed items
-	std::string removeExpiredItems(int month, int day, int year);
+	std::string removeExpiredItems(int day, int month, int year);
 
 };
