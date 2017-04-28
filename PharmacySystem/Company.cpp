@@ -467,6 +467,11 @@ void Company::transaction()
 		}
 	}
 	currentStore->addPurchase(Purchase(referral, day, month, year, customer, price, purchase));
+	customer->purchases.insert(customer->purchases.begin(), &(currentStore->getPurchaseList()[currentStore->getPurchaseList().size() -1]));
+	for (int x = 0; x < purchase.size(); x++)
+	{
+		//Get items, calculate price items would cost, and save in item data struct
+	}
 	return;
 	//send purchase to list
 }

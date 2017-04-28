@@ -54,14 +54,14 @@ bool ExpirationDate::operator ==(const ExpirationDate expDate)
 Item::Item(int idNum, int defaultItemQuantity, int requiredStock, int restockQuantity)
 	:idNum(idNum), defaultStoreQuantity(defaultStoreQuantity), requiredRestock(requiredStock), restockQuantity(restockQuantity)
 {
-	price = (float) -1;
+	price = rand() % 20 + 1;
 	name = "";
 	dosage = -1;
 	quantity = -1;
 }
 
 Item::Item(int idNum, int quantity ,float price, int requiredRestock, int restockQuantity, std::vector<ExpirationDate> expDate)
-	:idNum(idNum), quantity(quantity), price(price), requiredRestock(requiredRestock), expirationDates(expDate)
+	:idNum(idNum), quantity(quantity), price(price), requiredRestock(requiredRestock), restockQuantity(restockQuantity), expirationDates(expDate)
 {
 	name = "";
 	dosage = -1;
@@ -70,6 +70,11 @@ Item::Item(int idNum, int quantity ,float price, int requiredRestock, int restoc
 Item::Item(int vendorCode, int idNum, int quantity, std::vector<ExpirationDate> expDate)
 	:vendorCode(vendorCode), idNum(idNum), quantity(quantity), expirationDates(expDate)
 {
+	name = "";
+	dosage = -1;
+	requiredRestock = -1;
+	restockQuantity = -1;
+	price = rand() % 20 + 1;
 }
 
 //Outputs all item data, including expDates

@@ -51,6 +51,11 @@ int Store::getPriority(){
 	return priority;
 }
 
+std::vector<Purchase>& Store::getPurchaseList()
+{
+	return transactions;
+}
+
 void Store::setPriority(int p){
 	priority = p;
 }

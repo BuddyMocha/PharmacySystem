@@ -36,7 +36,6 @@ using namespace std;
 int main()
 {
 	Company company;
-
 	vector<addDeleteStoreClass> addDeleteStore;
 	vector<itemReceivedClass> itemReceived;
 	vector<storeUpdateClass> storeUpdate;
