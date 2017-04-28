@@ -55,16 +55,12 @@ void items2warehouse(vector<itemReceivedClass>&itemReceived, Company&company)
 
 	for (int i = 0; i < itemReceived.size(); i++)
 	{
-		cout << "HELLO" << itemReceived[i].getItemCode() << endl;
-
 		vendorCode = itemReceived[i].getVendorCode();
 		itemCode = itemReceived[i].getItemCode();
 		quantity = itemReceived[i].getQuantityReceived();
 		expirationDay = itemReceived[i].getExpirationDay();
 		expirationMonth = itemReceived[i].getExpirationMonth();
 		expirationYear = itemReceived[i].getExpirationYear();
-
-		cout << "THE YEAR ON ITS OWN: " << expirationYear << endl;
 
 		ExpirationDate expdate(expirationDay, expirationMonth, expirationYear, quantity);
 
@@ -318,11 +314,7 @@ void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 	{
 		store = company.getStore(storeUpdate[i].getStoreID());
 
-		cout << storeUpdate[i].getItemCode() << "DANIEL" << endl;
-
 		company.sendItems(storeUpdate[i].getItemCode(), storeUpdate[i].getRequestedQuantity(), store);
-		cout << store->getItem(storeUpdate[i].getItemCode())->toString() << endl;
-		cout << store->getItem(storeUpdate[i].getItemCode())->toString() << endl;
 	}
 }
 
