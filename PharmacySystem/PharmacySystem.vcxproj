@@ -144,6 +144,7 @@
   <ItemGroup>
     <Text Include="adddeletestore.txt" />
     <Text Include="EmployeeInfo.txt" />
+    <Text Include="ERRORS.TXT" />
     <Text Include="itemreceived.txt" />
     <Text Include="itemreceivedDELSTORE.txt" />
     <Text Include="items.txt" />

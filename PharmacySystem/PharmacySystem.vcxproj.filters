@@ -40,6 +40,9 @@
     <Text Include="vendororder.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="ERRORS.TXT">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
