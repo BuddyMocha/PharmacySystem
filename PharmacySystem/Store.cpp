@@ -17,7 +17,7 @@ Store::Store(int idNum, std::string streetAddress, std::string city, std::string
 Customer::Customer(std::string name, std::string address, std::string phoneNum, Insurance* insurance)
 	:name(name), address(address), phoneNum(phoneNum), insurance(insurance)
 {
-
+	numReferrals = 0;
 }
 
 Purchase::Purchase(bool referred, int day, int month, int year, Customer* customer, float cost, std::vector<Item> transaction)
@@ -114,7 +114,7 @@ void Store::addPurchase(Purchase p)
 }
 
 //Used at end of day routine to remove expired items and sort expiration dates. Can use removeItemFromInventory() to return & save the expired item somewhere
-std::string Store::removeExpiredItems(int month, int day, int year)
+std::string Store::removeExpiredItems(int day, int month, int year)
 {
 	std::stringstream output;
 	ExpirationDate date(day, month, year, 0);
@@ -122,19 +122,19 @@ std::string Store::removeExpiredItems(int month, int day, int year)
 	{
 		//Sorts all expiration dates daily during overnight cycle, and removes the expired ones
 		std::sort(inventory[x].expirationDates.begin(), inventory[x].expirationDates.end());
-		for (int y = 0; y < inventory[x].expirationDates.size(); x++)
-		{
-			if (inventory[x].expirationDates[y] == date)
+		//for (int y = 0; y < inventory[x].expirationDates.size(); x++)
+		//{
+			if (inventory[x].expirationDates[0] < date || inventory[x].expirationDates[0] == date)
 			{
-				inventory[x].quantity -= inventory[x].expirationDates[y].quantity;
-				output << "Removed " << inventory[x].expirationDates[y].quantity << " expired items of ID " << inventory[x].idNum << "\n";
-				inventory[x].expirationDates.erase(inventory[x].expirationDates.begin() + y);
+				inventory[x].quantity -= inventory[x].expirationDates[0].quantity;
+				output << "Removed " << inventory[x].expirationDates[0].quantity << " expired items of ID " << inventory[x].idNum << "\n";
+				inventory[x].expirationDates.erase(inventory[x].expirationDates.begin()); // + y
 			}
 			else
 			{
-				break;
+
 			}
-		}
+		//}
 	}
 	return output.str();
 }
@@ -249,7 +249,17 @@ std::string Store::getPurchaseHistory()
 	return input;
 }
 
+std::string Store::toString()
+{
+	std::string output;
+	output = "Address: " + streetAddress + ", City: " + city + ", State: " + state + "\n";
+	for (int x = 0; x < inventory.size(); x++)
+	{
+		output += inventory[x].toString();
+	}
 
+	return output;
+}
 
 
 

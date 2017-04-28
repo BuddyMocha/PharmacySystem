@@ -675,18 +675,18 @@ int Company::getYear()
 }
 std::string Company::removeExpiredItems()
 {
-	std::string output;
+	std::stringstream output;
 	std::string expiredItems = "";
 	for (int x = 0; x < storeChain.size(); x++)
 	{
 		expiredItems = storeChain[x].removeExpiredItems(day, month, year);
 		if (expiredItems != "")
 		{
-			output += "Store ID: " + storeChain[x].getID();
-			output += "\n" + expiredItems + "\n";
+			output << "Store ID: " << storeChain[x].getID();
+			output << "\n" << expiredItems << "\n";
 		}
 	}
-	return output;
+	return output.str();
 }
 /*
 std::vector<Purchase*> Company::findCustomerPurchases(std::string phoneNum)

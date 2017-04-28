@@ -35,7 +35,7 @@ bool ExpirationDate::operator <(ExpirationDate expDate)
 	return false;
 }
 //If the dates are equal...
-bool ExpirationDate::operator ==(const ExpirationDate expDate)
+bool ExpirationDate::operator ==(ExpirationDate expDate)
 {
 	if (year == expDate.year)
 	{

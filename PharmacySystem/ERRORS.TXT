@@ -1,43 +1,6 @@
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
-adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
-itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
-vendororder.txt rejected: HEADER ERROR - incorrect sequence number
-items.txt rejected: HEADER ERROR - incorrect sequence number
-reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt: error found on line 15
+itemreceived.txt: TRAILER ERROR - number of data records does not match actual file
+adddeletestore.txt: error found on line 15
 itemreceived.txt: error found on line 2
 itemreceived.txt: error found on line 3
 itemreceived.txt: error found on line 4
@@ -45,12 +8,135 @@ itemreceived.txt: error found on line 5
 itemreceived.txt: error found on line 7
 itemreceived.txt: error found on line 8
 itemreceived.txt: error found on line 9
+itemreceived.txt: error found on line 10
+itemreceived.txt: error found on line 11
+itemreceived.txt: error found on line 12
+itemreceived.txt: error found on line 13
 itemreceived.txt: TRAILER ERROR - number of data records does not match actual file
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt: error found on line 15
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
 adddeletestore.txt: error found on line 15
