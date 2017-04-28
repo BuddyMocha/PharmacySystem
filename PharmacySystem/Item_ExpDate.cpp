@@ -82,6 +82,7 @@ std::string Item::allDataToString()
 {
 	std::stringstream output;
 	output << "Item ID: " << idNum << "     Quantity Remaining: " << quantity << "\n";
+	output << "Price: " << price << "\n";
 	output << "    Restock at " << requiredRestock << " units. Refill to " << restockQuantity << " units.\n";
 	for (int x = 0; x < expirationDates.size(); x++)
 	{

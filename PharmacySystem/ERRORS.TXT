@@ -48,3 +48,9 @@ itemreceived.txt: error found on line 9
 itemreceived.txt: TRAILER ERROR - number of data records does not match actual file
 adddeletestore.txt: error found on line 15
 adddeletestore.txt: error found on line 15
+adddeletestore.txt: error found on line 15
+adddeletestore.txt: error found on line 15
+adddeletestore.txt: error found on line 15
+adddeletestore.txt: error found on line 15
+adddeletestore.txt: error found on line 15
+adddeletestore.txt: error found on line 15

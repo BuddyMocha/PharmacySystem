@@ -152,6 +152,7 @@ void Store::editItemData()
 	{
 		std::cout << "Please input the ID number for the item you wich to change, or \"x\" to exit" << std::endl;
 		std::cin >> input;
+		stream.clear();
 		stream.str(input);
 		if (stream >> idNum && getItem(idNum) != nullptr)
 		{
@@ -165,7 +166,8 @@ void Store::editItemData()
 				std::cout << "2. Restock at X quantity" << std::endl;
 				std::cout << "3. Restock to X quantity" << std::endl;
 				std::cout << "0. Choose another item" << std::endl;
-				std::getline(std::cin, input);
+				std::cin >> input;
+				stream.clear();
 				stream.str(input);
 				if (stream >> idNum && idNum >= 1 && idNum <= 3)
 				{
@@ -174,7 +176,8 @@ void Store::editItemData()
 						if (idNum == 1)
 						{
 							std::cout << "Please input value you wish to change the price to." << std::endl;
-							std::getline(std::cin, input);
+							std::cin >> input;
+							stream.clear();
 							stream.str(input);
 							if (stream >> price && price > 0)
 							{
@@ -189,7 +192,8 @@ void Store::editItemData()
 						else if (idNum == 2)
 						{
 							std::cout << "Please input value you wish to change the restock at X quantity to." << std::endl;
-							std::getline(std::cin, input);
+							std::cin >> input;
+							stream.clear();
 							stream.str(input);
 							if (stream >> changeData && changeData >= 0)
 							{
@@ -204,7 +208,8 @@ void Store::editItemData()
 						else if (idNum == 3)
 						{
 							std::cout << "Please input value you wish to change the restock to X quantity to." << std::endl;
-							std::getline(std::cin, input);
+							std::cin >> input;
+							stream.clear();
 							stream.str(input);
 							if (stream >> changeData && changeData > 0)
 							{
