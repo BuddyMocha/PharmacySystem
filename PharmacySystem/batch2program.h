@@ -80,11 +80,11 @@ void items2warehouse(vector<itemReceivedClass>&itemReceived, Company&company)
 	}
 }
 
-void writeStoreUpdateCREATESTORE(vector<addDeleteStoreClass> addDeleteStore, int seq)
+void writeStoreUpdateCREATESTORE(vector<addDeleteStoreClass>&addDeleteStore, int seq)
 {
 	int line = 0;
 
-	fstream fout("storeupdateCREATESTORE.txt");
+	ofstream fout("storeupdateCREATESTORE.txt");
 
 	fout << "HD ";
 
@@ -117,9 +117,216 @@ void writeStoreUpdateCREATESTORE(vector<addDeleteStoreClass> addDeleteStore, int
 	{
 		for (int j = 0; j < addDeleteStore[i].getItems().size(); j++)
 		{
+			line++;
+
 			fout << "A";
 
-			//if 
+			if (addDeleteStore[i].getStoreID() > 9999)
+			{
+				fout << addDeleteStore[i].getStoreID();
+			}
+			else
+			{
+				if (addDeleteStore[i].getStoreID() > 999)
+				{
+					fout << "0" << addDeleteStore[i].getStoreID();
+				}
+				else
+				{
+					if (addDeleteStore[i].getStoreID() > 99)
+					{
+						fout << "00" << addDeleteStore[i].getStoreID();
+					}
+					else
+					{
+						if (addDeleteStore[i].getStoreID() > 9)
+						{
+							fout << "000" << addDeleteStore[i].getStoreID();
+						}
+						else
+						{
+							fout << "0000" << addDeleteStore[i].getStoreID();
+						}
+					}
+				}
+			}
+
+			if (addDeleteStore[i].getStorePriority() > 9)
+			{
+				fout << addDeleteStore[i].getStorePriority();
+			}
+			else
+			{
+				fout << "0" << addDeleteStore[i].getStorePriority() << endl;
+			}
+
+			if (addDeleteStore[i].getItem(j).getItemCode() > 99999999)
+			{
+				fout << addDeleteStore[i].getItem(j).getItemCode();
+			}
+			else
+			{
+				if (addDeleteStore[i].getItem(j).getItemCode() > 9999999)
+				{
+					fout << "0" << addDeleteStore[i].getItem(j).getItemCode();
+				}
+				else
+				{
+					if (addDeleteStore[i].getItem(j).getItemCode() > 999999)
+					{
+						fout << "00" << addDeleteStore[i].getItem(j).getItemCode();
+					}
+					else
+					{
+						if (addDeleteStore[i].getItem(j).getItemCode() > 99999)
+						{
+							fout << "000" << addDeleteStore[i].getItem(j).getItemCode();
+						}
+						else
+						{
+							if (addDeleteStore[i].getItem(j).getItemCode() > 9999)
+							{
+								fout << "0000" << addDeleteStore[i].getItem(j).getItemCode();
+							}
+							else
+							{
+								if (addDeleteStore[i].getItem(j).getItemCode() > 999)
+								{
+									fout << "00000" << addDeleteStore[i].getItem(j).getItemCode();
+								}
+								else
+								{
+									if (addDeleteStore[i].getItem(j).getItemCode() > 99)
+									{
+										fout << "000000" << addDeleteStore[i].getItem(j).getItemCode();
+									}
+									else
+									{
+										if (addDeleteStore[i].getItem(j).getItemCode() > 9)
+										{
+											fout << "0000000" << addDeleteStore[i].getItem(j).getItemCode();
+										}
+										else
+										{
+											fout << "00000000" << addDeleteStore[i].getItem(j).getItemCode();
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if (addDeleteStore[i].getItem(j).getDefaultQuantity() > 99999999)
+			{
+				fout << addDeleteStore[i].getItem(j).getDefaultQuantity();
+			}
+			else
+			{
+				if (addDeleteStore[i].getItem(j).getDefaultQuantity()  > 99999999)
+				{
+					fout << "0" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+				}
+				else
+				{
+					if (addDeleteStore[i].getItem(j).getDefaultQuantity()  > 9999999)
+					{
+						fout << "00" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+					}
+					else
+					{
+						if (addDeleteStore[i].getItem(j).getDefaultQuantity()  > 999999)
+						{
+							fout << "000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+						}
+						else
+						{
+							if (addDeleteStore[i].getItem(j).getDefaultQuantity()  > 99999)
+							{
+								fout << "0000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+							}
+							else
+							{
+								if (addDeleteStore[i].getItem(j).getDefaultQuantity()  > 9999)
+								{
+									fout << "00000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+								}
+								else
+								{
+									if (addDeleteStore[i].getItem(j).getDefaultQuantity()  > 999)
+									{
+										fout << "000000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+									}
+									else
+									{
+										if (addDeleteStore[i].getItem(j).getDefaultQuantity() > 99)
+										{
+											fout << "0000000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+										}
+										else
+										{
+											if (addDeleteStore[i].getItem(j).getDefaultQuantity() > 9)
+											{
+												fout << "00000000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+											}
+											else
+											{
+												fout << "000000000" << addDeleteStore[i].getItem(j).getDefaultQuantity();
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			fout << endl;
 		}
+	}
+
+	fout << "T ";
+
+	if (line > 999)
+	{
+		fout << line;
+	}
+	else
+	{
+		if (line > 99)
+		{
+			fout << "0" << line;
+		}
+		else
+		{
+			if (line > 9)
+			{
+				fout << "00" << line;
+			}
+			else
+			{
+				fout << "000" << line;
+			}
+		}
+	}
+
+	addDeleteStore.clear();
+}
+
+void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
+{
+	int storeID;
+	int priorityLevel;
+	int itemCode;
+	int quantity;
+
+	Store *store;
+
+	for (int i = 0; i < storeUpdate.size(); i++)
+	{
+		store = company.getStore(storeUpdate[i].getStoreID);
+
+		store
 	}
 }

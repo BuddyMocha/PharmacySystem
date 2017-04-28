@@ -48,7 +48,7 @@ public:
 	bool isItemInStock(int id);
 	std::vector<Item> getItemList();
 	Item* getItem(int id);
-	void sendItems(std::vector<Item> order, Store destination);
+	void sendItems(std::vector<Item> order, Store *destination);
 	//Employee
 	std::vector<Employee> getEmployees();
 	void addEmployee(Employee e);

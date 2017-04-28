@@ -110,7 +110,7 @@ bool Company::addInventoryToWarehouse(Item item)
 }
 
 //Sends items from the warehouse to a store, will be done overnight so need a log to save data
-void Company::sendItems(std::vector<Item> order, Store destination)
+void Company::sendItems(std::vector<Item> order, Store *destination)
 {
 	std::vector<Item> completedOrder;
 	for (int x = 0; x < order.size(); x++)

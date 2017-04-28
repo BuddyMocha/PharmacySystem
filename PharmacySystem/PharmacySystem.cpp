@@ -160,9 +160,7 @@ int main()
 			cout << "********************************\n";
 
 			addDeleteStore = AddDeleteStore(addDeleteStore, addDeleteStoreSeq);
-			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
-			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqINVENTORYREVIEW, "storeupdateINVENTORYREVIEW.txt");
-			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
+			
 			itemReceived = ItemReceived(itemReceived, itemReceivedSeq, "itemreceived.txt");
 			//itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
 			vendorOrder = VendorOrder(vendorOrder, vendorOrderSeq);
@@ -182,7 +180,13 @@ int main()
 				cout << inventory[i].allDataToString() << endl;
 			}
 
-			//writeStoreUpdateCREATESTORE(addDeleteStore, storeUpdateSeqCREATESTORE);
+			writeStoreUpdateCREATESTORE(addDeleteStore, storeUpdateSeqCREATESTORE);
+
+			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
+			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqINVENTORYREVIEW, "storeupdateINVENTORYREVIEW.txt");
+			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
+
+			warehouse2store(storeUpdate, company);
 
 			//Date plus one day
 			company.datePlusDays(1);
