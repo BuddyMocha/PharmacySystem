@@ -4,6 +4,8 @@ int checkDate(int&seq, string name, int date[], int dateInt[]);//checks if date 
 
 int checkHeader(vector<char> file, string name, int&seq, int date[])//checkHeader main function
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char seqChar[4];
 	int seqInt;
 
@@ -17,7 +19,7 @@ int checkHeader(vector<char> file, string name, int&seq, int date[])//checkHeade
 		{
 			if (!isdigit(file[3 + i]))
 			{
-				cout << name << " rejected: HEADER ERROR - non-digit found in sequence number" << endl;
+				fout << name << " rejected: HEADER ERROR - non-digit found in sequence number" << endl;
 
 				return 1;
 			}
@@ -43,7 +45,7 @@ int checkHeader(vector<char> file, string name, int&seq, int date[])//checkHeade
 			}
 			else
 			{
-			cout << name << " rejected: HEADER ERROR - date has incorrect format" << endl;
+			fout << name << " rejected: HEADER ERROR - date has incorrect format" << endl;
 
 			return 1;
 			}
@@ -52,14 +54,14 @@ int checkHeader(vector<char> file, string name, int&seq, int date[])//checkHeade
 		}
 		else
 		{
-			cout << name << " rejected: HEADER ERROR - incorrect sequence number" << endl;
+			fout << name << " rejected: HEADER ERROR - incorrect sequence number" << endl;
 
 			return 1;
 		}
 	}
 	else
 	{
-		cout << name << " rejected: HEADER ERROR - format incorrect or header doesn't exist" << endl;
+		fout << name << " rejected: HEADER ERROR - format incorrect or header doesn't exist" << endl;
 
 		return 1;
 	}
@@ -81,7 +83,7 @@ int*date2intArray(char dateChar[], string name)
 		{
 			if (!isdigit(dateChar[i]))
 			{
-				//cout << name << " rejected: non-digit found in date" << endl;
+				//fout << name << " rejected: non-digit found in date" << endl;
 
 				dateInt[0] = -1;
 				dateInt[1] = -1;
@@ -97,7 +99,7 @@ int*date2intArray(char dateChar[], string name)
 		{
 			if (!isdigit(dateChar[5 + i]))
 			{
-				//cout << name << " rejected: non-digit found in date" << endl;
+				//fout << name << " rejected: non-digit found in date" << endl;
 
 				dateInt[0] = -1;
 				dateInt[1] = -1;
@@ -113,7 +115,7 @@ int*date2intArray(char dateChar[], string name)
 		{
 			if (!isdigit(dateChar[8 + i]))
 			{
-				//cout << name << " rejected: non-digit found in date" << endl;
+				//fout << name << " rejected: non-digit found in date" << endl;
 
 				dateInt[0] = -1;
 				dateInt[1] = -1;
@@ -138,7 +140,7 @@ int*date2intArray(char dateChar[], string name)
 	/*
 	if (dateInt[1] > 12)
 	{
-	cout << name << " rejected: month is greater than 12" << endl;
+	fout << name << " rejected: month is greater than 12" << endl;
 
 	dateInt[0] = -1;
 	dateInt[1] = -1;
@@ -147,7 +149,7 @@ int*date2intArray(char dateChar[], string name)
 
 	if (dateInt[2] > 31)
 	{
-	cout << name << " rejected: day is greater than 31" << endl;
+	fout << name << " rejected: day is greater than 31" << endl;
 
 	dateInt[0] = -1;
 	dateInt[1] = -1;
@@ -174,6 +176,8 @@ void updateRefs(int&seq, int date[], int dateInt[])
 
 int checkDate(int&seq, string name, int date[], int dateInt[])
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	if (dateInt[0]>date[0])
 	{
 		updateRefs(seq, date, dateInt);
@@ -202,7 +206,7 @@ int checkDate(int&seq, string name, int date[], int dateInt[])
 						}
 						else
 						{
-							cout << name << " rejected: date already processed" << endl;
+							fout << name << " rejected: date already processed" << endl;
 
 							return 1;
 						}
@@ -210,7 +214,7 @@ int checkDate(int&seq, string name, int date[], int dateInt[])
 				}
 				else
 				{
-					cout << name << " rejected: date already processed" << endl;
+					fout << name << " rejected: date already processed" << endl;
 
 					return 1;
 				}
@@ -218,7 +222,7 @@ int checkDate(int&seq, string name, int date[], int dateInt[])
 		}
 		else
 		{
-			cout << name << " rejected: date already processed" << endl;
+			fout << name << " rejected: date already processed" << endl;
 
 			return 1;
 		}

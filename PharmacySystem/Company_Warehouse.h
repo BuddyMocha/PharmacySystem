@@ -39,6 +39,11 @@ public:
 		return storeChain;
 	}
 
+	Store getJustAStore(int input)
+	{
+		return storeChain[input];
+	}
+
 	void addStore(Store s);
 	void deleteStore(int id);
 	Store* getStore(int id);

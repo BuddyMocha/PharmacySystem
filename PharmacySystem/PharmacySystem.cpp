@@ -172,7 +172,6 @@ int main()
 			cout << endl;
 			cout << inventory.size() << endl << endl;
 
-
 			writeStoreUpdateCREATESTORE(addDeleteStore, storeUpdateSeqCREATESTORE);
 
 			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
@@ -180,6 +179,8 @@ int main()
 			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
 
 			warehouse2store(storeUpdate, company);
+
+			deleteStore(addDeleteStore, company);
 
 			//Date plus one day
 			company.datePlusDays(1);

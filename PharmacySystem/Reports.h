@@ -74,6 +74,8 @@ vector<reportsClass> Reports(vector<reportsClass> reports, int&Seq)//main functi
 
 vector<reportsClass> getReportsInput(vector<reportsClass> reports, vector<char> file, string name, int loc, int line)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char inChar[9];
 	reportsClass report;
 
@@ -85,7 +87,7 @@ vector<reportsClass> getReportsInput(vector<reportsClass> reports, vector<char> 
 			{
 				if (!isdigit(file[loc + 2 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return reports;
 				}
@@ -98,7 +100,7 @@ vector<reportsClass> getReportsInput(vector<reportsClass> reports, vector<char> 
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return reports;
 		}
@@ -109,14 +111,14 @@ vector<reportsClass> getReportsInput(vector<reportsClass> reports, vector<char> 
 		{
 			if (loc + 8 != file.size())
 			{
-				cout << name << ": error found in trailer format" << endl;
+				fout << name << ": error found in trailer format" << endl;
 
 				return reports;
 			}
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return reports;
 		}

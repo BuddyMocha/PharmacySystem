@@ -8,9 +8,11 @@ int fileCheck(fstream&fin, string name)//main function of fileCheck
 
 int fileExists(fstream&fin, string name)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	if (fin.fail())
 	{
-		cout << name + " does not exist" << endl;
+		fout << name + " does not exist" << endl;
 		return 1;
 	}
 
@@ -19,11 +21,13 @@ int fileExists(fstream&fin, string name)
 
 int fileEmpty(fstream&fin, string name)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	fin.ignore(1);
 
 	if (fin.eof())
 	{
-		cout << name + " is empty" << endl;
+		fout << name + " is empty" << endl;
 		return 1;
 	}
 

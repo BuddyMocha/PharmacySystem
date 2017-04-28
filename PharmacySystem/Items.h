@@ -173,6 +173,8 @@ vector<itemsClass> Items(vector<itemsClass> items, int&Seq)
 
 vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, string name, int loc, int&line, int&lineD, int&lineA, int&lineC)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char itemCode[9];
 	vector<char> itemName;
 	vector<char> itemDescription;
@@ -198,7 +200,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 				{
 					if (!isdigit(file[loc + 1 + i]))
 					{
-						cout << name << ": error - non-digit found on line " << line << endl;
+						fout << name << ": error - non-digit found on line " << line << endl;
 
 						return items;
 					}
@@ -213,7 +215,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 		}
 		else
 		{
-			cout << name << ": ERROR - delete found in wrong sequence " << endl;
+			fout << name << ": ERROR - delete found in wrong sequence " << endl;
 		}
 	}
 
@@ -232,7 +234,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 		}
 		else
 		{
-			cout << name << ": ERROR - D action code not found before ND" << endl;
+			fout << name << ": ERROR - D action code not found before ND" << endl;
 
 			line--;
 
@@ -252,7 +254,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -287,7 +289,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -299,7 +301,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -312,7 +314,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -335,7 +337,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 		}
 		else
 		{
-			cout << name << ": ERROR - A action code found in wrong sequence " << endl;
+			fout << name << ": ERROR - A action code found in wrong sequence " << endl;
 		}
 	}
 
@@ -354,7 +356,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 		}
 		else
 		{
-			cout << name << ": ERROR - A action code not found before NA" << endl;
+			fout << name << ": ERROR - A action code not found before NA" << endl;
 
 			line--;
 
@@ -374,7 +376,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -409,7 +411,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -421,7 +423,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -434,7 +436,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return items;
 				}
@@ -457,7 +459,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 		}
 		else
 		{
-			cout << name << ": ERROR - C code found in wrong sequence " << endl;
+			fout << name << ": ERROR - C code found in wrong sequence " << endl;
 		}
 	}
 
@@ -476,7 +478,7 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 		}
 		else
 		{
-			cout << name << ": ERROR - C action code not found before ND" << endl;
+			fout << name << ": ERROR - C action code not found before ND" << endl;
 
 			line--;
 
@@ -489,6 +491,8 @@ vector<itemsClass>  ItemsInput(vector<itemsClass> items, vector<char> file, stri
 
 int checkNumber(vector<char> file, string name, int line, int loc, string rec)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char numbChar[4];
 
 	if (file[loc + 1] == rec.at(0) && file[loc + 2] == rec.at(1) && file[loc + 3] == ' ')
@@ -497,7 +501,7 @@ int checkNumber(vector<char> file, string name, int line, int loc, string rec)
 		{
 			if (!isdigit(file[loc + 4 + i]))
 			{
-				cout << name << ": #ROWS ERROR - non-digit found in #ROWS" << endl;
+				fout << name << ": #ROWS ERROR - non-digit found in #ROWS" << endl;
 
 				return 0;
 			}
@@ -507,14 +511,14 @@ int checkNumber(vector<char> file, string name, int line, int loc, string rec)
 
 		if (atoi(numbChar) != line)
 		{
-			cout << name << ": #ROWS ERROR - number of item records does not match #ROWS number" << endl;
+			fout << name << ": #ROWS ERROR - number of item records does not match #ROWS number" << endl;
 
 			return 0;
 		}
 	}
 	else
 	{
-		cout << name << ": #ROWS ERROR - format incorrect or #ROWS doesn't exist" << endl;
+		fout << name << ": #ROWS ERROR - format incorrect or #ROWS doesn't exist" << endl;
 
 		return 0;
 	}

@@ -120,6 +120,8 @@ vector<storeUpdateClass> StoreUpdate(vector<storeUpdateClass> storeUpdate, int&S
 
 vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates, vector<char> file, string name, int loc, int line)
 {
+	ofstream fout("ERRORS.TXT", ios::app);
+
 	char storeID[5];
 	char storePriority[2];
 	char itemCode[9];
@@ -137,7 +139,7 @@ vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return storeUpdates;
 				}
@@ -150,7 +152,7 @@ vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return storeUpdates;
 				}
@@ -163,7 +165,7 @@ vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return storeUpdates;
 				}
@@ -176,7 +178,7 @@ vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates,
 			{
 				if (!isdigit(file[loc + 1 + i]))
 				{
-					cout << name << ": error - non-digit found on line " << line << endl;
+					fout << name << ": error - non-digit found on line " << line << endl;
 
 					return storeUpdates;
 				}
@@ -189,7 +191,7 @@ vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates,
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return storeUpdates;
 		}
@@ -200,14 +202,14 @@ vector<storeUpdateClass> StoreUpdateInput(vector<storeUpdateClass> storeUpdates,
 		{
 			if (loc + 8 != file.size())
 			{
-				cout << name << ": error found in trailer format" << endl;
+				fout << name << ": error found in trailer format" << endl;
 
 				return storeUpdates;
 			}
 		}
 		else
 		{
-			cout << name << ": error found on line " << line << endl;
+			fout << name << ": error found on line " << line << endl;
 
 			return storeUpdates;
 		}
