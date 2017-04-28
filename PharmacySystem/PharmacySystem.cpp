@@ -35,7 +35,23 @@ using namespace std;
 
 int main()
 {
+	
 	Company company;
+	/*
+	Customer c((std::string)"Bob", (std::string) "Address", (std::string)"1231231232", new Insurance(1, "Blue Cross", .10));
+	std::vector<ExpirationDate> exp = { ExpirationDate(10,11,18,2) };
+	std::vector<Item> i= { Item(1, 2, 2.00f, 10, 20, exp), Item(3, 2, 2.50f, 15, 25, exp) };
+	Purchase p(false, 31, 12, 96, &c, 21.42f, i);
+	c.purchases.push_back(&p);
+	cout << c.getPurchaseHistory() << endl;
+	company.addCustomer(c);
+
+	
+	Store s(1, (std::string) "address", (std::string) "city", (std::string) "state", 12345, 1);
+	std::vector<ExpirationDate> exp = { ExpirationDate(10,11,18,2) };
+	s.addItemtoInv(Item(1, 2, 2.00f, 10, 20, exp));
+	company.addStore(s);
+	*/
 	vector<addDeleteStoreClass> addDeleteStore;
 	vector<itemReceivedClass> itemReceived;
 	vector<storeUpdateClass> storeUpdate;
@@ -102,7 +118,7 @@ int main()
 			cout << "***Customer Report Generation***\n";
 			cout << "********************************\n";
 			// rest of code here
-			sampleProgram();
+			company.customerReportGen();
 			break;
 		case 2:
 			cout << endl;
