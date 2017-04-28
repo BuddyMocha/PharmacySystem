@@ -154,9 +154,8 @@ int main()
 			cout << "**Add, Delete, Edit Item Data***\n";
 			cout << "********************************\n";
 			cout << "Please input the store ID for the items you wish to edit." << endl;
-			cin >> input;
-			std::stringstream stream(input);
-			if (stream >> choice && company.getStore(choice) != nullptr)
+			cin >> choice;
+			if (company.getStore(choice) != nullptr)
 			{
 				company.getStore(choice)->editItemData();
 			}
