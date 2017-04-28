@@ -94,7 +94,7 @@ int main()
 		cout << " 1 - Customer Report Generation \n";
 		cout << " 2 - Enter Transaction \n";
 		cout << " 3 - Historical Sales Info \n";
-		cout << " 4 - Item Data \n";
+		cout << " 4 - Store Data \n";
 		cout << " 5 - Add, Delete, Edit Item Data \n";
 		cout << " 6 - Employee Login \n";
 		cout << " 7 - End Day (Process Batch Files) \n";
@@ -137,18 +137,14 @@ int main()
 			break;
 		case 4:
 			cout << endl;
-			cout << "***********Item Data************\n";
+			cout << "***********Store Data************\n";
 			cout << "********************************\n";
 			// rest of code here
-			cout << "Please input the ID for the item you wish to view." << endl;
+			cout << "Please input the ID for the store you wish to view." << endl;
 			cin >> choice;
-			if (company.isItemInStock(choice))
+			if (company.getStore(choice) != nullptr)
 			{
-				cout << company.getItem(choice)->allDataToString() << endl;
-			}
-			else
-			{
-				cout << "Item does not exist." << endl;
+				cout << company.getStore(choice)->toString() << endl;
 			}
 			break;
 		case 5:
@@ -173,7 +169,7 @@ int main()
 			cout << endl;
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
-			//cout << company.removeExpiredItems() << endl;
+			cout << company.removeExpiredItems() << endl;
 
 			addDeleteStore.clear();
 			itemReceived.clear();
@@ -200,7 +196,7 @@ int main()
 			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
 
 			warehouse2store(storeUpdate, company);
-			/*
+			/*Bra
 			stores = company.getStoreChain();
 			for (int i = 0; i < stores.size(); i++)
 			{
