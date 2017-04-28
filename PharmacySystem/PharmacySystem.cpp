@@ -68,6 +68,8 @@ int main()
 	company.getTodaysDate();
 	company.setupDate();
 
+	vector<Item> inventory;
+
 	while (systemOn != false)
 	{
 		cout << endl;
@@ -95,7 +97,6 @@ int main()
 			cin.clear();
 			cin.ignore(100, '\n');
 		}
-		
 
 		switch (choice)
 		{
@@ -159,16 +160,29 @@ int main()
 			cout << "********************************\n";
 
 			addDeleteStore = AddDeleteStore(addDeleteStore, addDeleteStoreSeq);
-			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
-			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqINVENTORYREVIEW, "storeupdateINVENTORYREVIEW.txt");
-			storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
+			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqCREATESTORE, "storeupdateCREATESTORE.txt");
+			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqINVENTORYREVIEW, "storeupdateINVENTORYREVIEW.txt");
+			//storeUpdate = StoreUpdate(storeUpdate, storeUpdateSeqONLINEREQUEST, "storeupdateONLINEREQUEST.txt");
 			itemReceived = ItemReceived(itemReceived, itemReceivedSeq, "itemreceived.txt");
-			itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
+			//itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
 			vendorOrder = VendorOrder(vendorOrder, vendorOrderSeq);
 			items = Items(items, itemsSeq);
 			reports = Reports(reports, reportsSeq);//processes reports.txt
 
-			addStore2program(addDeleteStore, company);
+			addStoreAndItems2company(addDeleteStore, company);
+			items2warehouse(itemReceived, company);
+
+			inventory = company.getWarehouse().inventory;
+
+			cout << endl;
+			cout << inventory.size() << endl << endl;
+
+			for (int i = 0; i < inventory.size(); i++)
+			{
+				cout << inventory[i].allDataToString() << endl;
+			}
+
+			//writeStoreUpdateCREATESTORE(addDeleteStore, storeUpdateSeqCREATESTORE);
 
 			//Date plus one day
 			company.datePlusDays(1);

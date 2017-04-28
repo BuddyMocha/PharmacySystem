@@ -54,9 +54,9 @@ bool Company::isItemInStock(int id)
 }
 
 //Returns stockable items
-std::vector<Item>* Company::getItemList()
+std::vector<Item> Company::getItemList()
 {
-	return &stockableItems;
+	return stockableItems;
 }
 
 Item* Company::getItem(int id)
@@ -94,14 +94,17 @@ bool Company::addInventoryToWarehouse(Item item)
 			if (warehouse.inventory[x].idNum == item.idNum)
 			{
 				warehouse.inventory[x].addQuantity(item);
+				std::cout << "TROO" << std::endl;
 				return true;
 			}
 		}
 		warehouse.inventory.push_back(item);
+		std::cout << "TRUE" << std::endl;
 		return true;
 	}
 	else
 	{
+		std::cout << "FALSE" << std::endl;
 		return false;
 	}
 }
