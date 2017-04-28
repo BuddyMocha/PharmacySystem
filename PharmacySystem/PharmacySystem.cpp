@@ -110,17 +110,7 @@ int main()
 			cout << endl;
 			cout << "*******Enter Transaction********\n";
 			cout << "********************************\n";
-			// rest of code here
-
-			if (company.verifyEmployee() == true)
-			{
-				cout << "Processing Transaction. \n";
-			}
-			else
-			{
-				cout << "Can't Process Transaction. \n";
-			}
-			sampleProgram();
+			company.transaction();
 			break;
 		case 3:
 			cout << endl;
@@ -134,22 +124,34 @@ int main()
 			cout << "***********Item Data************\n";
 			cout << "********************************\n";
 			// rest of code here
-			sampleProgram();
+			cout << "Please input the ID for the item you wish to view." << endl;
+			cin >> choice;
+			if (company.isItemInStock(choice))
+			{
+				cout << company.getItem(choice)->allDataToString() << endl;
+			}
+			else
+			{
+				cout << "Item does not exist." << endl;
+			}
 			break;
 		case 5:
 			cout << endl;
 			cout << "**Add, Delete, Edit Item Data***\n";
 			cout << "********************************\n";
+			cout << "Please input the store ID for the items you wish to edit." << endl;
+			cin >> choice;
+			company.getStore(choice);
+
 			// rest of code here
 			sampleProgram();
 			break;
 		case 6:
 			cout << endl;
-			cout << "*********Employee Login*********\n";
-			cout << "********************************\n";
+			cout << "*********Change Employee Logged in*********\n";
+			cout << "*******************************************\n";
 			// rest of code here
 			company.employeeLogin();
-			sampleProgram();
 			break;
 		case 7:
 			cout << endl;

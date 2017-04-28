@@ -20,7 +20,7 @@ private:
 	std::vector<std::string> dataLogs;
 	std::vector<Store> storeChain;
 	std::vector<Item> stockableItems;
-	std::vector<Insurance> insuranceProviders;
+	std::vector<Insurance> insuranceProviders = {Insurance(1, "Blue Cross Blue Shield", .1f), Insurance(2, "Humana", .08f), Insurance(3, "UnitedHealthcare", .05f), Insurance(4, "Aetna", .09f)};
 	std::vector<Employee> employeeList;
 	std::vector<Customer> customers;
 	std::string currentUser;
@@ -47,6 +47,7 @@ public:
 	void deleteItemFromStock(int id);
 	bool isItemInStock(int id);
 	std::vector<Item>* getItemList();
+	Item* getItem(int id);
 	void sendItems(std::vector<Item> order, Store destination);
 	//Employee
 	std::vector<Employee> getEmployees();

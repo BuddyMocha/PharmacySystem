@@ -67,8 +67,6 @@ Item::Item(int idNum, int quantity ,float price, int requiredRestock, int restoc
 	dosage = -1;
 }
 
-
-
 //Outputs all item data, including expDates
 std::string Item::allDataToString()
 {
@@ -101,19 +99,27 @@ std::string Item::toString()
 //Adds the quantity of 2 items together, and merges their experation date lists
 void Item::addQuantity(Item stock)
 {
-	quantity += stock.quantity;
-	for (int x = 0; x < stock.expirationDates.size(); x++)
+	if (idNum == stock.idNum)
 	{
-		expirationDates.push_back(stock.expirationDates[x]);
-	}
-	std::sort(expirationDates.begin(), expirationDates.end());
-	for (int x = 0; x < expirationDates.size() - 1; x++)
-	{
-		if (expirationDates[x] == expirationDates[x + 1])
+		quantity += stock.quantity;
+		for (int x = 0; x < stock.expirationDates.size(); x++)
 		{
-			expirationDates[x].quantity += expirationDates[x + 1].quantity;
-			expirationDates.erase(expirationDates.begin() + x + 1);
+			expirationDates.push_back(stock.expirationDates[x]);
 		}
+		std::sort(expirationDates.begin(), expirationDates.end());
+		for (int x = 0; x < expirationDates.size() - 1; x++)
+		{
+			if (expirationDates[x] == expirationDates[x + 1])
+			{
+				expirationDates[x].quantity += expirationDates[x + 1].quantity;
+				expirationDates.erase(expirationDates.begin() + x + 1);
+				x--;
+			}
+		}
+	}
+	else
+	{
+		std::cout << "ID numbers not the same, cannot merge items" << std::endl;
 	}
 }
 
@@ -124,6 +130,7 @@ Item Item::removeQuantity(int amount)
 	std::vector<ExpirationDate> expDates;
 	quantity -= amount;
 	//Sorts the expDate list before removing items. If process is too slow, remove this line
+	std::sort(expirationDates.begin(), expirationDates.end());
 	if (amount <= quantity)
 	{
 		for (int x = 0; x < expirationDates.size() && amount > 0; x++)

@@ -59,6 +59,18 @@ std::vector<Item>* Company::getItemList()
 	return &stockableItems;
 }
 
+Item* Company::getItem(int id)
+{
+	for (int x = 0; x < stockableItems.size(); x++)
+	{
+		if (stockableItems[x].idNum = id)
+		{
+			return &stockableItems[x];
+		}
+	}
+	return nullptr;
+}
+
 //GEts item from warehouse with id
 Item* Warehouse::getItem(int idNum)
 {
@@ -79,7 +91,7 @@ bool Company::addInventoryToWarehouse(Item item)
 	{
 		for (int x = 0; x < warehouse.inventory.size(); x++)
 		{
-			if (warehouse.inventory[x].idNum = item.idNum)
+			if (warehouse.inventory[x].idNum == item.idNum)
 			{
 				warehouse.inventory[x].addQuantity(item);
 				return true;
@@ -117,26 +129,23 @@ void Company::sendItems(std::vector<Item> order, Store destination)
 				//Log no item quantity, order from vendor
 			}
 		}
-		else if(!isItemInStock(order[x].idNum))
-		{
-			//Log that item was not a stockable item
-		}
 		else
 		{
 			//Log that item was not found in warehouse
 		}
 	}
-
 	for (int x = 0; x < completedOrder.size(); x++)
 	{
 		destination.addItemtoInv(completedOrder[x]);
 	}
 }
+
 //Adds employee with specified argument
 void Company::addEmployee(Employee e)
 {
 	employeeList.push_back(e);
 }
+
 //Adds store with specified argument if the ID doesn't exist
 void Company::addStore(Store s)
 {
@@ -150,6 +159,7 @@ void Company::addStore(Store s)
 	}
 	storeChain.push_back(s);
 }
+
 //Deletes Store with Given ID
 void Company::deleteStore(int id)
 {
@@ -244,6 +254,10 @@ void Company::createCustomer()
 		while (insurance == nullptr)
 		{
 			std::cout << "Please input the ID number for the new customer's insurance" << std::endl;
+			std::cout << "ID:1, Blue Cross Blue Shield " << std::endl;
+			std::cout << "ID:2, Humana" << std::endl;
+			std::cout << "ID:3, UnitedHealthcare" << std::endl;
+			std::cout << "ID:4, Aetna" << std::endl;
 			std::getline(std::cin, input);
 			std::stringstream stream(input);
 			if (stream >> idNum)
@@ -400,8 +414,9 @@ void Company::transaction()
 		
 	}
 
-	//2nd employee should confirm transaction here
-
+	//2nd employee confirms transaction
+	while(!verifyEmployee())
+	
 	//Show cart, cost, and deduct referral & insurance amount
 
 	std::cout << "Cart:" << std::endl;

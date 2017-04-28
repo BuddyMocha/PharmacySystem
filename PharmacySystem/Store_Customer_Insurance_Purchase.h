@@ -3,9 +3,10 @@
 #include "Item_ExpDate.h"
 struct Insurance
 {
+	std::string name;
 	int idNum;
 	float copay;
-	Insurance(int id, float copay);
+	Insurance(int id, std::string name, float copay);
 	std::string toString();
 };
 
@@ -71,7 +72,7 @@ public:
 	std::vector<Purchase> getPurchaseList();
 
 	//Class Functions
-	
+	void editItemData();
 	//Ran daily to remove expired items, and will return a string to log removed items
 	std::string removeExpiredItems(int month, int day, int year);
 

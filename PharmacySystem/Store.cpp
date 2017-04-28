@@ -1,7 +1,7 @@
 #include "Store_Customer_Insurance_Purchase.h"
 
-Insurance::Insurance(int id, float copay)
-	:idNum(id), copay(copay)
+Insurance::Insurance(int id, std::string name, float copay)
+	:idNum(id), name(name), copay(copay)
 {
 
 }
@@ -132,6 +132,101 @@ std::string Store::removeExpiredItems(int month, int day, int year)
 		}
 	}
 	return output.str();
+}
+
+//MUST be tested
+void Store::editItemData()
+{
+	std::stringstream stream;
+	int idNum = -1;
+	int changeData = -1;
+	float price = (float) -1;
+	std::string input = "";
+	Item* item;
+	while (input != "x")
+	{
+		std::cout << "Please input the ID number for the item you wich to change, or \"x\" to exit" << std::endl;
+		std::getline(std::cin, input);
+		stream.str(input);
+		if (stream >> idNum && getItem(idNum) != nullptr)
+		{
+			item = getItem(idNum);
+			
+			while (input != "x" && input != "0")
+			{
+				std::cout << item->allDataToString() << std::endl;
+				std::cout << "Please input corresponding number for the data you wish to edit, or \"x\" to exit" << std::endl;
+				std::cout << "1. Price" << std::endl;
+				std::cout << "2. Restock at X quantity" << std::endl;
+				std::cout << "3. Restock to X quantity" << std::endl;
+				std::cout << "0. Choose another item" << std::endl;
+				std::getline(std::cin, input);
+				stream.str(input);
+				if (stream >> idNum && idNum >= 1 && idNum <= 3)
+				{
+					while (input != "x")
+					{
+						if (idNum == 1)
+						{
+							std::cout << "Please input value you wish to change the price to." << std::endl;
+							std::getline(std::cin, input);
+							stream.str(input);
+							if (stream >> price && price > 0)
+							{
+								item->price = price;
+								break;
+							}
+							else
+							{
+								std::cout << "Please input a valid price, or \"x\" to exit" << std::endl;
+							}
+						}
+						else if (idNum == 2)
+						{
+							std::cout << "Please input value you wish to change the restock at X quantity to." << std::endl;
+							std::getline(std::cin, input);
+							stream.str(input);
+							if (stream >> changeData && changeData >= 0)
+							{
+								item->requiredRestock = changeData;
+								break;
+							}
+							else
+							{
+								std::cout << "Please input a valid restock quantity, or \"x\" to exit" << std::endl;
+							}
+						}
+						else if (idNum == 3)
+						{
+							std::cout << "Please input value you wish to change the restock to X quantity to." << std::endl;
+							std::getline(std::cin, input);
+							stream.str(input);
+							if (stream >> changeData && changeData > 0)
+							{
+								item->restockQuantity = changeData;
+								break;
+							}
+							else
+							{
+								std::cout << "Please input a valid restock quantity > 0, or \"x\" to exit" << std::endl;
+							}
+						}
+
+					}
+				}
+				else if(input != "0")
+				{
+					std::cout << "Please input a valid value, or \"x\" to exit" << std::endl;
+				}
+			}
+
+		}
+		else
+		{
+			std::cout << "Please input a valid value, or \"x\" to exit" << std::endl;
+		}
+	}
+	return;
 }
 
 
