@@ -151,7 +151,7 @@ void Store::editItemData()
 	while (input != "x")
 	{
 		std::cout << "Please input the ID number for the item you wich to change, or \"x\" to exit" << std::endl;
-		std::getline(std::cin, input);
+		std::cin >> input;
 		stream.str(input);
 		if (stream >> idNum && getItem(idNum) != nullptr)
 		{

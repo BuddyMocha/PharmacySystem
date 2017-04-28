@@ -236,7 +236,7 @@ void Company::createCustomer()
 	std::cout << "Please input the new customer's 10-digit phone number." << std::endl;
 	while (phoneNum.length() != 10)
 	{
-		std::getline(std::cin, phoneNum);
+		std::cin >> phoneNum;
 		if (phoneNum.length() != 10)
 		{
 			std::cout << "The inputted phone # was not 10 digits. Please try again." << std::endl;
@@ -245,9 +245,9 @@ void Company::createCustomer()
 	if (getCustomer(phoneNum) == nullptr)
 	{
 		std::cout << "Please input the new customer's name." << std::endl;
-		std::getline(std::cin, name);
+		std::cin >> name;
 		std::cout << "Please input the new customer's address." << std::endl;
-		std::getline(std::cin, address);
+		std::cin >> address;
 		while (insurance == nullptr)
 		{
 			std::cout << "Please input the ID number for the new customer's insurance" << std::endl;
@@ -255,7 +255,7 @@ void Company::createCustomer()
 			std::cout << "ID:2, Humana" << std::endl;
 			std::cout << "ID:3, UnitedHealthcare" << std::endl;
 			std::cout << "ID:4, Aetna" << std::endl;
-			std::getline(std::cin, input);
+			std::cin >> input;
 			std::stringstream stream(input);
 			if (stream >> idNum)
 			{
@@ -293,19 +293,18 @@ void Company::transaction()
 	int inputNum = -1;
 	std::string input = "";
 	//Find store
-	std::cout << "Please input the ID number of the store you are purchasing from." << std::endl;
+	std::cout << "Please input the ID number of the store you are purchasing from, or \"x\" to exit." << std::endl;
 	while (currentStore == nullptr)
 	{
-		
-		std::getline(std::cin, input);
+		std::cin >> input;
 		std::stringstream stream(input);
-		if (stream >> inputNum)
+		if (stream >> inputNum && getStore(inputNum) != nullptr)
 		{
 			currentStore = getStore(inputNum);
 		}
-		else
+		else if (input == "x")
 		{
-			std::cout << "Invalid store ID, please input a valid ID number." << std::endl;
+			return;
 		}
 	}
 	//Get customer
@@ -314,7 +313,7 @@ void Company::transaction()
 	input = "";
 	while (customer == nullptr)
 	{
-		std::getline(std::cin, input);
+		std::cin >> input;
 		if (input.length() == 10)
 		{
 			customer = getCustomer(input);
@@ -336,7 +335,7 @@ void Company::transaction()
 	while (input != "n")
 	{
 		input = "";
-		std::getline(std::cin, input);
+		std::cin >> input;
 		Customer* referrer = getCustomer(input);
 		if (input.length() == 10 && referrer != nullptr)
 		{
@@ -362,45 +361,49 @@ void Company::transaction()
 	{
 		int quantityRequested = 0;
 		input = "";
-		std::getline(std::cin, input);
+		std::cin >> input;
 		std::stringstream stream(input);
-		if (stream >> inputNum)
+		if (stream >> inputNum && currentStore->getItem(inputNum) != nullptr)
 		{
-			if (currentStore->getItem(inputNum) != nullptr && quantityPurchased < 5)
+			if (quantityPurchased < 5)
 			{
 				std::cout << currentStore->getItem(inputNum)->toString() << std::endl;
-				std::cout << "\nWhat quantity of this item do you wish to purchase?" << std::endl;
-				std::getline(std::cin, input);
-				stream.clear();
-				stream.str(input);
-				if (stream >> quantityRequested)
+				while (input != "n" && input != "x")
 				{
-					if (quantityRequested + quantityPurchased <= 5)
-					{
-						quantityPurchased += quantityRequested;
-						purchase.push_back(currentStore->getItem(inputNum)->removeQuantity(quantityRequested));
 
-						std::cout << purchase[0].allDataToString() << std::endl;
-						if (quantityRequested + quantityPurchased < 5)
+					std::cout << "\nWhat quantity of this item do you wish to purchase? Input \"x\" to choose another item." << std::endl;
+
+					std::cin >> input;
+					stream.clear();
+					stream.str(input);
+					if (stream >> quantityRequested && quantityRequested > 0)
+					{
+						if (quantityRequested + quantityPurchased <= 5)
 						{
-							std::cout << "Please enter the ID number of the product being purchased, and \"n\" to finalize the transaction." << std::endl;
+							quantityPurchased += quantityRequested;
+							purchase.push_back(currentStore->getItem(inputNum)->removeQuantity(quantityRequested));
+
+							if (quantityRequested + quantityPurchased < 5)
+							{
+								std::cout << "Please enter the ID number of the product being purchased, and \"n\" to finalize the transaction." << std::endl;
+								input = "x";
+							}
+							else
+							{
+								std::cout << "Five items have been added to the cart, proceeding to checkout." << std::endl;
+								input = "n";
+							}
 						}
 						else
 						{
-							std::cout << "Five items have been added to the cart, proceeding to checkout." << std::endl;
-							input = "n";
+							std::cout << "Only 5 items can be purchased in total. You have currently added " << quantityPurchased << " items to the cart." << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "Only 5 items can be purchased in total. You have currently added "<< quantityPurchased << "items to the cart." << std::endl;
+						std::cout << "Please enter a value between 1 and 5." << std::endl;
 					}
 				}
-				else
-				{
-					std::cout << "Please enter a value between 1 and 5." << std::endl;
-				}
-
 			}
 			else
 			{
@@ -408,6 +411,11 @@ void Company::transaction()
 				input = "n";
 			}
 		}
+		else
+		{
+			std::cout << "Please enter a valid input" << std::endl;
+		}
+			
 		
 	}
 
@@ -699,6 +707,7 @@ void Company::customerReportGen()
 	std::cout << "Please input the phone number of the customer you wish to see the data for." << std::endl;
 	while (input != "x")
 	{
+		std::cin >> input;
 		if (getCustomer(input) != nullptr)
 		{
 			input = getCustomer(input)->getPurchaseHistory();
@@ -730,6 +739,8 @@ void Company::historicalSales()
 			{
 				std::cout << "Please input the ID number for the store you wish to see." << std::endl;
 				std::cin >> input;
+				stream.clear();
+				stream.str(input);
 				if (stream >> id && getStore(id) != nullptr)
 				{
 					std::cout << getStore(id)->getPurchaseHistory();
@@ -747,6 +758,8 @@ void Company::historicalSales()
 			{
 				std::cout << "Please input the ID number for the item you wish to see." << std::endl;
 				std::cin >> input;
+				stream.clear();
+				stream.str(input);
 				if (stream >> id && getItem(id) != nullptr)
 				{
 					std::cout << getItem(id)->getPurchaseHistory();

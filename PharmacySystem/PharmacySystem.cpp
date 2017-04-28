@@ -68,7 +68,7 @@ int main()
 	int itemsSeq = 9999;
 	int vendorOrderSeq = 5001;
 	int reportsSeq = 0;//expected sequence number of reports.txt (number will be increased by yearlySales.h)
-
+	std::string input;
 	int choice;
 	bool systemOn = true;
 	//employee login here
@@ -152,11 +152,12 @@ int main()
 			cout << "**Add, Delete, Edit Item Data***\n";
 			cout << "********************************\n";
 			cout << "Please input the store ID for the items you wish to edit." << endl;
-			cin >> choice;
-			company.getStore(choice)->editItemData();
-
-			// rest of code here
-			sampleProgram();
+			cin >> input;
+			std::stringstream stream(input);
+			if (stream >> choice && company.getStore(choice) != nullptr)
+			{
+				company.getStore(choice)->editItemData();
+			}
 			break;
 		case 6:
 			cout << endl;
@@ -169,7 +170,7 @@ int main()
 			cout << endl;
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
-			cout << company.removeExpiredItems() << endl;
+			//cout << company.removeExpiredItems() << endl;
 
 			addDeleteStore.clear();
 			itemReceived.clear();

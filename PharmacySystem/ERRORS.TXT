@@ -13,3 +13,13 @@ itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
 vendororder.txt rejected: HEADER ERROR - incorrect sequence number
 items.txt rejected: HEADER ERROR - incorrect sequence number
 reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
+adddeletestore.txt rejected: HEADER ERROR - incorrect sequence number
+itemreceived.txt rejected: HEADER ERROR - incorrect sequence number
+vendororder.txt rejected: HEADER ERROR - incorrect sequence number
+items.txt rejected: HEADER ERROR - incorrect sequence number
+reports.txt rejected: HEADER ERROR - incorrect sequence number
