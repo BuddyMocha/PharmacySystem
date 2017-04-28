@@ -137,7 +137,6 @@ void Company::sendItems(int idNum, int quantity, Store* destination)
 		//Log that item was not found in warehouse
 		return;
 	}
-	
 	destination->addItemtoInv(order);
 }
 

@@ -142,7 +142,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="adddeletestore.txt" />
+    <Text Include="EmployeeInfo.txt" />
+    <Text Include="itemreceived.txt" />
+    <Text Include="itemreceivedDELSTORE.txt" />
+    <Text Include="items.txt" />
     <Text Include="ReadMe.txt" />
+    <Text Include="reports.txt" />
+    <Text Include="storeupdateCREATESTORE.txt" />
+    <Text Include="vendororder.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddDeleteStore.h" />

@@ -16,6 +16,30 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="adddeletestore.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="EmployeeInfo.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="itemreceived.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="itemreceivedDELSTORE.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="items.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="reports.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="storeupdateCREATESTORE.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="vendororder.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

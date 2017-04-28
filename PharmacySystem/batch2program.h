@@ -327,5 +327,9 @@ void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 	{
 		store = company.getStore(storeUpdate[i].getStoreID());
 
+		cout << storeUpdate[i].getItemCode() << "DANIEL" << endl;
+
+		company.sendItems(storeUpdate[i].getItemCode(), storeUpdate[i].getRequestedQuantity(), store);
+		cout << store->getItem(storeUpdate[i].getItemCode())->toString() << endl;
 	}
 }

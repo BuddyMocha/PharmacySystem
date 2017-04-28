@@ -57,14 +57,12 @@ int main()
 	int choice;
 	bool systemOn = true;
 	//employee login here
-
 	company.employeeLogin();
 
 	if (company.getLoggedIn() == false)
 	{
 		return 0;
 	}
-
 	company.getTodaysDate();
 	company.setupDate();
 
@@ -175,10 +173,6 @@ int main()
 			cout << endl;
 			cout << inventory.size() << endl << endl;
 
-			for (int i = 0; i < inventory.size(); i++)
-			{
-				cout << inventory[i].allDataToString() << endl;
-			}
 
 			writeStoreUpdateCREATESTORE(addDeleteStore, storeUpdateSeqCREATESTORE);
 
