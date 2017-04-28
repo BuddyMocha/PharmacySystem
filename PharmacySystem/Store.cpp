@@ -59,7 +59,7 @@ void Store::addItemtoInv(Item item){
 	std::cout << "BRAD: " << item.idNum << std::endl;
 	for (int x = 0; x < inventory.size(); x++)
 	{
-		if (inventory[x].idNum = item.idNum)
+		if (inventory[x].idNum == item.idNum)
 		{
 			inventory[x].addQuantity(item);
 			return;
@@ -81,7 +81,7 @@ Item Store::removeItemFromInv(int idNum)
 {
 	for (int x = 0; x < inventory.size(); x++)
 	{
-		if (inventory[x].idNum = idNum)
+		if (inventory[x].idNum == idNum)
 		{
 			Item item = inventory[x].removeQuantity(inventory[x].quantity);
 			inventory.erase(inventory.begin() + x);
@@ -96,7 +96,7 @@ Item* Store::getItem(int id)
 {
 	for (int x = 0; x < inventory.size(); x++)
 	{
-		if (inventory[x].idNum = idNum)
+		if (inventory[x].idNum == id)
 		{
 			return &inventory[x];
 		}
