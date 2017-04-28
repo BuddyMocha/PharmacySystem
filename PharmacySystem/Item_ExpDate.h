@@ -22,6 +22,7 @@ struct Item
 	std::string name;
 	int dosage;
 	//
+	int vendorCode;
 	int idNum, quantity, defaultStoreQuantity;
 	int requiredRestock;    //The quantity at which the item must be refilled
 	int restockQuantity;    //The quantity to refill the item to
@@ -29,6 +30,8 @@ struct Item
 	//Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates);
 	Item(int idNum, int defaultStoreQuantity, int requiredStock, int restockQuantity);
 	Item(int idNum, int initialAmount, float price, int requiredRestock, int restockQuantity, std::vector<ExpirationDate> expDate);
+	Item(int vendorCode, int idNum, int quantity, std::vector<ExpirationDate> expDate);
+
 	std::string allDataToString();
 	std::string toString();
 	std::string checkoutString();

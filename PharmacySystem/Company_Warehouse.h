@@ -46,7 +46,7 @@ public:
 	void addItemToStock(Item i);
 	void deleteItemFromStock(int id);
 	bool isItemInStock(int id);
-	std::vector<Item>* getItemList();
+	std::vector<Item> getItemList();
 	void sendItems(std::vector<Item> order, Store destination);
 	//Employee
 	std::vector<Employee> getEmployees();
@@ -93,6 +93,11 @@ public:
 	void getTodaysDate();
 	void setupDate();
 
+	//Daniel's stuff
 
+	Warehouse getWarehouse()
+	{
+		return warehouse;
+	}
 };
 

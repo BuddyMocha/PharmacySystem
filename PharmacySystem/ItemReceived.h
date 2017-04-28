@@ -35,11 +35,11 @@ public:
 		quantityReceived = input;
 	}
 
-	void setExpirationDate(int day, int month, int year)
+	void setExpirationDate(int year, int month, int day)
 	{
-		expirationDay = day;
-		expirationMonth = month;
 		expirationYear = year;
+		expirationMonth = month;
+		expirationDay = day;
 	}
 
 	int getVendorCode()

@@ -67,7 +67,10 @@ Item::Item(int idNum, int quantity ,float price, int requiredRestock, int restoc
 	dosage = -1;
 }
 
-
+Item::Item(int vendorCode, int idNum, int quantity, std::vector<ExpirationDate> expDate)
+	:vendorCode(vendorCode), idNum(idNum), quantity(quantity), expirationDates(expDate)
+{
+}
 
 //Outputs all item data, including expDates
 std::string Item::allDataToString()
