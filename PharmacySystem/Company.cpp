@@ -63,7 +63,7 @@ Item* Company::getItem(int id)
 {
 	for (int x = 0; x < stockableItems.size(); x++)
 	{
-		if (stockableItems[x].idNum = id)
+		if (stockableItems[x].idNum == id)
 		{
 			return &stockableItems[x];
 		}
@@ -76,7 +76,7 @@ Item* Warehouse::getItem(int idNum)
 {
 	for (int x = 0; x < inventory.size(); x++)
 	{
-		if (inventory[x].idNum = idNum)
+		if (inventory[x].idNum == idNum)
 		{
 			return &inventory[x];
 		}

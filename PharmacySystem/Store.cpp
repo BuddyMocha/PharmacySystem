@@ -96,7 +96,7 @@ Item* Store::getItem(int id)
 {
 	for (int x = 0; x < inventory.size(); x++)
 	{
-		if (inventory[x].idNum == idNum)
+		if (inventory[x].idNum == id)
 		{
 			return &inventory[x];
 		}
