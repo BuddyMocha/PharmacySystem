@@ -91,7 +91,8 @@ public:
 	void transaction();
 
 	//Finds all purchases related to a customer
-	std::vector<Purchase> findCustomerPurchases(Customer c);
+	std::vector<Purchase*> findCustomerPurchases(std::string phoneNum);
+	void customerReportGen();
 	//Formats a chart to display a store's purchases, but would likely be better at Company level
 	std::string displayPurchases(int year);
 	//Date functionalities

@@ -1,38 +1,6 @@
 #pragma once
 
 #include "Item_ExpDate.h"
-struct Insurance
-{
-	std::string name;
-	int idNum;
-	float copay;
-	Insurance(int id, std::string name, float copay);
-	std::string toString();
-};
-
-struct Purchase;
-
-struct Customer
-{
-	std::string name, address, phoneNum;
-	int numReferrals;
-	Insurance* insurance;
-	std::vector<Purchase*> purchases;
-	Customer(std::string name, std::string address, std::string phoneNum, Insurance* insurance);
-	std::string toString();
-	std::string getPurchaseHistory();
-};
-
-//storeNumber can be retrieved from encapsulating store
-struct Purchase
-{
-	bool referred;
-	int day, month, year;
-	Customer* customer;
-	float cost;
-	std::vector<Item> transaction;
-	Purchase(bool referred, int day, int month, int year, Customer* customer, float cost, std::vector<Item> transaction);
-};
 
 class Store
 {

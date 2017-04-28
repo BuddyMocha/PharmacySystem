@@ -437,6 +437,8 @@ void Company::transaction()
 		referral = true;
 		std::cout << "You currently have " << customer->numReferrals << " referrals. One will be used, and you will get 5% off your order." << std::endl;
 		std::cout << "Your new total is: ";
+		price = price * .95;
+		customer->numReferrals--;
 		//std::cout << std::fixed << std::setprecision(2);
 		std::cout << price << std::endl;
 	}
@@ -468,9 +470,14 @@ void Company::transaction()
 	}
 	currentStore->addPurchase(Purchase(referral, day, month, year, customer, price, purchase));
 	customer->purchases.insert(customer->purchases.begin(), &(currentStore->getPurchaseList()[currentStore->getPurchaseList().size() -1]));
+	
 	for (int x = 0; x < purchase.size(); x++)
 	{
-		//Get items, calculate price items would cost, and save in item data struct
+		std::vector<Item> singlePurchase = { purchase[x] };
+		if(referral)
+		currentStore->getItem(purchase[x].idNum)->purchases.insert((currentStore->getItem(purchase[x].idNum)->purchases.begin()), Purchase(referral, day, month, year, customer, purchase[x].price * purchase[x].quantity *(1 - customer->insurance->copay) * .95, singlePurchase));
+		else
+		currentStore->getItem(purchase[x].idNum)->purchases.insert((currentStore->getItem(purchase[x].idNum)->purchases.begin()), Purchase(referral, day, month, year, customer, purchase[x].price * purchase[x].quantity *(1 - customer->insurance->copay), singlePurchase));
 	}
 	return;
 	//send purchase to list
@@ -675,4 +682,37 @@ std::string Company::removeExpiredItems()
 		}
 	}
 	return output;
+}
+/*
+std::vector<Purchase*> Company::findCustomerPurchases(std::string phoneNum)
+{
+	for (int x = 0; x < customers.size(); x++)
+	{
+		if (customers[x].phoneNum == phoneNum)
+		{
+			return customers[x].purchases;
+		}
+	}
+	return std::vector<Purchase*>();
+}
+*/
+void Company::customerReportGen()
+{
+	std::string input;
+	std::cout << "Please input the phone number of the customer you wish to see the data for." << std::endl;
+	while (input != "x")
+	{
+		std::cin >> input;
+		if (getCustomer(input) != nullptr)
+		{
+			input = getCustomer(input)->getPurchaseHistory();
+			std::cout << input << std::endl;
+			std::cout << "Input a new phone number, or \"x\" to exit." << std::endl;
+		}
+		else if(input != "x")
+		{
+			std::cout << "Customer not found, please try again or input \"x\" to exit." << std::endl;
+
+		}
+	}
 }

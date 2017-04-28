@@ -171,3 +171,43 @@ Item Item::removeQuantity(int amount)
 	}
 	return Item(idNum, initialAmount, price, requiredRestock, restockQuantity, expDates);
 }
+
+std::string Purchase::toString()
+{
+	std::stringstream output;
+	output << "Date of purchase: " << month << "/" << day << "/" << year << "\n";
+	output << "Customer: " << customer->toString() << "\n";
+	output << "Items: \n";
+	for (int x = 0; x < transaction.size(); x++)
+	{
+		output << transaction[x].toString();
+	}
+	output << "Total cost: " << cost << "\n";
+	return output.str();
+}
+std::string Purchase::toNoCustomerString()
+{
+	std::stringstream output;
+	output << "Date of purchase: " << month << "/" << day << "/" << year << "\n";
+	output << "Items: \n";
+	for (int x = 0; x < transaction.size(); x++)
+	{
+		output << transaction[x].toString();
+	}
+	output << "Total cost: " << cost << "\n";
+	return output.str();
+}
+
+
+std::string Customer::getPurchaseHistory()
+{
+	std::stringstream output;
+	output << "Customer: " << toString() << "\n";
+	for (int x = 0; x < purchases.size(); x++)
+	{
+		output << (*purchases[x]).toNoCustomerString();
+	}
+	return output.str();
+}
+
+

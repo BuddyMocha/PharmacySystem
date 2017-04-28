@@ -61,7 +61,6 @@ void Store::setPriority(int p){
 }
 
 void Store::addItemtoInv(Item item){
-	std::cout << "BRAD: " << item.idNum << std::endl;
 	for (int x = 0; x < inventory.size(); x++)
 	{
 		if (inventory[x].idNum == item.idNum)
