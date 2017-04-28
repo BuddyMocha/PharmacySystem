@@ -325,8 +325,7 @@ void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 
 	for (int i = 0; i < storeUpdate.size(); i++)
 	{
-		store = company.getStore(storeUpdate[i].getStoreID);
+		store = company.getStore(storeUpdate[i].getStoreID());
 
-		store
 	}
 }
