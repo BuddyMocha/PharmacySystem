@@ -318,10 +318,42 @@ void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 	}
 }
 
-void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company)
+void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company, int seq)
 {
+	int line = 0;
+
+	ofstream fout("itemreceivedDELSTORE.txt");
+
+	fout << "HD ";
+
+	if (seq > 999)
+	{
+		fout << seq;
+	}
+	else
+	{
+		if (seq > 99)
+		{
+			fout << "0" << seq;
+		}
+		else
+		{
+			if (seq > 9)
+			{
+				fout << "00" << seq;
+			}
+			else
+			{
+				fout << "000" << seq;
+			}
+		}
+	}
+
+	fout << "      2017-03-27" << endl;
+
 	vector<Item> items;
 	vector<ExpirationDate> expDates;
+
 	for (int i = 0; i < addDeleteStore.size(); i++)
 	{
 		if (addDeleteStore[i].getActionCode() == 'D')
@@ -337,15 +369,164 @@ void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company)
 						items[h].vendorCode;
 						items[h].idNum;
 						expDates = items[h].expirationDates;
-						for (int g = 0; g < expDates.size(); x++)
+						for (int g = 0; g < expDates.size(); g++)
 						{
 							expDates[g].month;
 							expDates[g].day;
 							expDates[g].year;
 							expDates[g].quantity;
+
+							line++;
+
+							if (items[h].vendorCode > 999)
+							{
+								fout << items[h].vendorCode;
+							}
+							else
+							{
+								if (items[h].vendorCode > 99)
+								{
+									fout << "0" << items[h].vendorCode;
+								}
+								else
+								{
+									if (items[h].vendorCode > 9)
+									{
+										fout << "00" << items[h].vendorCode;
+									}
+									else
+									{
+										fout << "000" << items[h].vendorCode;
+									}
+								}
+							}
+
+							if (items[h].idNum > 99999999)
+							{
+								fout << items[h].idNum;
+							}
+							else
+							{
+								if (items[h].idNum > 9999999)
+								{
+									fout << "0" << items[h].idNum;
+								}
+								else
+								{
+									if (items[h].idNum > 999999)
+									{
+										fout << "00" << items[h].idNum;
+									}
+									else
+									{
+										if (items[h].idNum > 99999)
+										{
+											fout << "000" << items[h].idNum;
+										}
+										else
+										{
+											if (items[h].idNum > 9999)
+											{
+												fout << "0000" << items[h].idNum;
+											}
+											else
+											{
+												if (items[h].idNum > 999)
+												{
+													fout << "00000" << items[h].idNum;
+												}
+												else
+												{
+													if (items[h].idNum > 99)
+													{
+														fout << "000000" << items[h].idNum;
+													}
+													else
+													{
+														if (items[h].idNum > 9)
+														{
+															fout << "0000000" << items[h].idNum;
+														}
+														else
+														{
+															fout << "00000000" << items[h].idNum;
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+
+							if (expDates[g].quantity > 99999999)
+							{
+								fout << expDates[g].quantity;
+							}
+							else
+							{
+								if (expDates[g].quantity  > 99999999)
+								{
+									fout << "0" << expDates[g].quantity;
+								}
+								else
+								{
+									if (expDates[g].quantity  > 9999999)
+									{
+										fout << "00" << expDates[g].quantity;
+									}
+									else
+									{
+										if (expDates[g].quantity  > 999999)
+										{
+											fout << "000" << expDates[g].quantity;
+										}
+										else
+										{
+											if (expDates[g].quantity  > 99999)
+											{
+												fout << "0000" << expDates[g].quantity;
+											}
+											else
+											{
+												if (expDates[g].quantity  > 9999)
+												{
+													fout << "00000" << expDates[g].quantity;
+												}
+												else
+												{
+													if (expDates[g].quantity  > 999)
+													{
+														fout << "000000" << expDates[g].quantity;
+													}
+													else
+													{
+														if (expDates[g].quantity > 99)
+														{
+															fout << "0000000" << expDates[g].quantity;
+														}
+														else
+														{
+															if (expDates[g].quantity > 9)
+															{
+																fout << "00000000" << expDates[g].quantity;
+															}
+															else
+															{
+																fout << "000000000" << expDates[g].quantity;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+
+							fout << expDates[g].year << "-" << expDates[g].month << "-" << expDates[g].day << endl;
 						}
 					}
-
 					company.deleteStore(company.getJustAStore(j).getID());
 				}
 			}

@@ -203,7 +203,7 @@ int main()
 				cout << stores[i].getID() << endl;
 			}
 			*/
-			deleteStore(addDeleteStore, company);
+			deleteStore(addDeleteStore, company, itemReceivedSeqDELSTORE);
 
 			//Date plus one day
 			company.datePlusDays(1);
