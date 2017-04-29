@@ -1,6 +1,14 @@
 #pragma once
 
 #include "Item_ExpDate.h"
+struct Order
+{
+	int storeID;
+	int itemID;
+	int quantity;
+	int priority;
+	Order(int itemID, int quantity, int storeID, int priority);
+};
 
 class Store
 {
@@ -14,8 +22,8 @@ private:
 	std::string state;
 	int zipCode;
 
-	//Holds the number of items requested to be restocked the next day
-	std::vector<Item> currentOrder;
+	//Holds the number of items requested to be restocked the next day - store id, item id, quantity & priority
+	std::vector<Order> currentOrder;
 	std::vector<Purchase> transactions;
 public:
 	//Constructor for new store
@@ -45,6 +53,7 @@ public:
 	std::string getPurchaseHistory();
 	//Class Functions
 	void editItemData();
+	void restockStore();
 	//Ran daily to remove expired items, and will return a string to log removed items
 	std::string removeExpiredItems(int day, int month, int year);
 	std::string toString();

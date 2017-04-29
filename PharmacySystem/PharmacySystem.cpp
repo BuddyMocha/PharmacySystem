@@ -98,6 +98,7 @@ int main()
 		cout << " 5 - Add, Delete, Edit Item Data \n";
 		cout << " 6 - Employee Login \n";
 		cout << " 7 - Assign/Delete Item \n";
+		cout << " 8 - Restock Store \n";
 		cout << " 9 - End Day (Process Batch Files) \n";
 		cout << " 0 - Exit.\n";
 		cout << endl;
@@ -111,8 +112,6 @@ int main()
 			cin.clear();
 			cin.ignore(100, '\n');
 		}
-
-		vector<Store> stores;
 
 		switch (choice)
 		{
@@ -170,7 +169,7 @@ int main()
 			cout << endl;
 			cout << "*********Assign/Delete Item****************\n";
 			cout << "*******************************************\n";
-			cout << "Do you wish to 1. Assign an item to a store, or 2. Delete an item from a store?";
+			cout << "Do you wish to 1. Assign an item to a store, or 2. Delete an item from a store?" << endl;
 			cin >> choice;
 			if (choice == 1)
 			{
@@ -180,6 +179,35 @@ int main()
 			{
 				company.deleteFromStore();
 			}
+			break;
+		case 8:
+			cout << endl;
+			cout << "*********Restock Store*********\n";
+			cout << "*******************************\n";
+			cout << "This will restock the items in one or all stores that are under their restock quantity up to their restock values." << endl;
+			cout << "Do you wish to 1. Restock one store, or 2. Restock all stores?" << endl;
+			cin >> choice;
+			if (choice == 1)
+			{
+				cout << "Please input the ID number of the store to restock, or \"0\" to exit.";
+				while (choice != 0)
+				{
+					cin >> choice;
+					if (company.getStore(choice) != nullptr)
+					{
+						company.getStore(choice)->restockStore();
+						choice = 0;
+					}
+				}
+			}
+			else if (choice == 2)
+			{
+				for (int x = 0; x < company.getStoreChain().size(); x++)
+				{
+					company.getStoreChain()[x];
+				}
+			}
+			break;
 		case 9:
 			cout << endl;
 			cout << "*End Day (Process Batch Files)**\n";

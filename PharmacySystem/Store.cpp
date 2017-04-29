@@ -277,6 +277,22 @@ std::vector<Item> Store::getItemList()
 	return inventory;
 }
 
+Order::Order(int itemID, int quantity, int storeID, int priority)
+	:itemID(itemID), quantity(quantity), storeID(storeID), priority(priority)
+{
+
+}
+
+void Store::restockStore()
+{
+	for (int x = 0; x < inventory.size(); x++)
+	{
+		if (inventory[x].requiredRestock > inventory[x].quantity)
+		{
+			currentOrder.push_back(Order(inventory[x].idNum, inventory[x].restockQuantity - inventory[x].quantity, idNum, priority));
+		}
+	}
+}
 
 
 

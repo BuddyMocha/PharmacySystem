@@ -806,12 +806,14 @@ void Company::assignStore()
 		stream.str(input);
 		if (stream >> idNum && getItem(idNum) != nullptr && store->getItem(idNum) == nullptr)
 		{
-			Item item(idNum, store->getItem(idNum)->defaultStoreQuantity, store->getItem(idNum)->requiredRestock, store->getItem(idNum)->restockQuantity);
-			item.vendorCode = store->getItem(idNum)->vendorCode;
-			item.dosage = store->getItem(idNum)->dosage;
-			item.name = store->getItem(idNum)->name;
-			item.price = store->getItem(idNum)->price;
+			Item item(idNum, getItem(idNum)->defaultStoreQuantity, getItem(idNum)->requiredRestock, getItem(idNum)->restockQuantity);
+			item.vendorCode = getItem(idNum)->vendorCode;
+			item.dosage = getItem(idNum)->dosage;
+			item.name = getItem(idNum)->name;
+			item.price = getItem(idNum)->price;
+			item.quantity = 0;
 			store->addItemtoInv(item);
+			input = "x";
 		}
 	}
 }
@@ -845,6 +847,7 @@ void Company::deleteFromStore()
 			if (store->getItem(idNum)->quantity == 0)
 			{
 				store->deleteItem(idNum);
+				input = "x";
 			}
 		}
 	}
