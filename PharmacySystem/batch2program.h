@@ -363,9 +363,9 @@ void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company, in
 		{
 			for (int j = 0; j < company.getStoreChain().size(); j++)
 			{
-				if (addDeleteStore[i].getStoreID() == company.getStore(j)->getID())
+				if (company.getStore(addDeleteStore[i].getStoreID()) != nullptr)
 				{
-					company.getStore(j)->getItemList();
+					items = company.getStore(addDeleteStore[i].getStoreID())->getItemList();
 
 					for (int h = 0; h < items.size(); h++)
 					{
@@ -527,9 +527,53 @@ void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company, in
 								}
 							}
 
-							fout << expDates[g].year << "-" << expDates[g].month << "-" << expDates[g].day << endl;
+							fout << expDates[g].year << "-";
+							
+							if (expDates[g].month > 9)
+							{
+								fout << expDates[g].month << "-";
+							}
+							else
+							{
+								fout << "0" << expDates[g].month << "-";
+							}
+
+							if (expDates[g].day > 9)
+							{
+								fout << expDates[g].day << endl;
+							}
+							else
+							{
+								fout << "0" << expDates[g].day << endl;
+							}
 						}
 					}
+
+					fout << "T ";
+
+					if (line > 999)
+					{
+						fout << line;
+					}
+					else
+					{
+						if (line > 99)
+						{
+							fout << "0" << line;
+						}
+						else
+						{
+							if (line > 9)
+							{
+								fout << "00" << line;
+							}
+							else
+							{
+								fout << "000" << line;
+							}
+						}
+					}
+
 					company.deleteStore(company.getJustAStore(j).getID());
 				}
 			}

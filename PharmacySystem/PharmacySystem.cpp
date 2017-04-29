@@ -220,6 +220,10 @@ int main()
 			*/
 			deleteStore(addDeleteStore, company, itemReceivedSeqDELSTORE);
 
+			itemReceived.clear();
+			itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
+			items2warehouse(itemReceived, company);
+
 			//Date plus one day
 			company.datePlusDays(1);
 			//Change current date to new date
