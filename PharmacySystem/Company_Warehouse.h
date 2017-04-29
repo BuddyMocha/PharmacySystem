@@ -54,6 +54,8 @@ public:
 	std::vector<Item> getItemList();
 	Item* getItem(int id);
 	void sendItems(int idNum, int quantity, Store* destination);
+	void assignStore();
+	void deleteFromStore();
 	//Employee
 	std::vector<Employee> getEmployees();
 	void addEmployee(Employee e);

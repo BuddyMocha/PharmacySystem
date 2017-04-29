@@ -31,6 +31,7 @@ public:
 	void addItemtoInv(Item item);
 	std::vector<Item> getItemList();
 	Item* getItem(int idNum);
+	void deleteItem(int idNum);
 	//Overloaded, the first definition is to completely remove the item from the inventory, the second is just to remove a quantity of items. Both return what was removed.
 	Item removeItemFromInv(int idNum);
 	Item removeItemFromInv(int idNum, int quantity);

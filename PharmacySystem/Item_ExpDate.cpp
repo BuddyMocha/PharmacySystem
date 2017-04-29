@@ -170,7 +170,9 @@ Item Item::removeQuantity(int amount)
 	{
 		std::cout << "Error: Item quantity is " << quantity << ". Amount requested was " << amount << ". Please request an available amount." << std::endl;
 	}
-	return Item(idNum, initialAmount, price, requiredRestock, restockQuantity, expDates);
+	Item item(idNum, initialAmount, price, requiredRestock, restockQuantity, expDates);
+	item.vendorCode = vendorCode;
+	return item;
 }
 
 std::string Purchase::toString()

@@ -1,3 +1,6 @@
+#pragma once
+#include "Company_Warehouse.h"
+
 void addStoreAndItems2company(vector<addDeleteStoreClass> addDeleteStore, Company&company)
 {
 	int storeID;
@@ -318,7 +321,7 @@ void warehouse2store(vector<storeUpdateClass> storeUpdate, Company&company)
 	}
 }
 
-void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company)
+void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company& company)
 {
 	vector<Item> items;
 	vector<ExpirationDate> expDates;
@@ -330,14 +333,14 @@ void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company)
 			{
 				if (addDeleteStore[i].getStoreID() == company.getStore(j)->getID())
 				{
-					items = company.getStore(j)->getItemList();
+					company.getStore(j)->getItemList();
 
 					for (int h = 0; h < items.size(); h++)
 					{
 						items[h].vendorCode;
 						items[h].idNum;
 						expDates = items[h].expirationDates;
-						for (int g = 0; g < expDates.size(); x++)
+						for (int g = 0; g < expDates.size(); g++)
 						{
 							expDates[g].month;
 							expDates[g].day;
