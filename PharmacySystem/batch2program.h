@@ -1,3 +1,6 @@
+#pragma once
+#include "Company_Warehouse.h"
+
 void addStoreAndItems2company(vector<addDeleteStoreClass> addDeleteStore, Company&company)
 {
 	int storeID;
@@ -362,7 +365,7 @@ void deleteStore(vector<addDeleteStoreClass> addDeleteStore, Company&company, in
 			{
 				if (addDeleteStore[i].getStoreID() == company.getStore(j)->getID())
 				{
-					items = company.getStore(j)->getItemList();
+					company.getStore(j)->getItemList();
 
 					for (int h = 0; h < items.size(); h++)
 					{

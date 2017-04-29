@@ -31,7 +31,7 @@ struct Item
 	int restockQuantity;    //The quantity to refill the item to
 	std::vector<ExpirationDate> expirationDates;
 	//Item(int idNum, int quantity, float price, int requiredStock, int restockQuantity, std::vector<ExpirationDate> expDates);
-	Item(int idNum, int defaultStoreQuantity, int requiredStock, int restockQuantity);
+	Item(int idNum, int defaultStoreQuantity, int requiredRestock, int restockQuantity);
 	Item(int idNum, int quantity, float price, int requiredRestock, int restockQuantity, std::vector<ExpirationDate> expDate);
 	Item(int vendorCode, int idNum, int quantity, std::vector<ExpirationDate> expDate);
 	Item() {}

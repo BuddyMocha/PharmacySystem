@@ -97,8 +97,9 @@ int main()
 		cout << " 4 - Store Data \n";
 		cout << " 5 - Add, Delete, Edit Item Data \n";
 		cout << " 6 - Employee Login \n";
-		cout << " 7 - End Day (Process Batch Files) \n";
-		cout << " 8 - Exit.\n";
+		cout << " 7 - Assign/Delete Item \n";
+		cout << " 9 - End Day (Process Batch Files) \n";
+		cout << " 0 - Exit.\n";
 		cout << endl;
 		cout << " Enter your choice and press return: ";
 
@@ -167,6 +168,20 @@ int main()
 			break;
 		case 7:
 			cout << endl;
+			cout << "*********Assign/Delete Item****************\n";
+			cout << "*******************************************\n";
+			cout << "Do you wish to 1. Assign an item to a store, or 2. Delete an item from a store?";
+			cin >> choice;
+			if (choice == 1)
+			{
+				company.assignStore();
+			}
+			else if (choice == 2)
+			{
+				company.deleteFromStore();
+			}
+		case 9:
+			cout << endl;
 			cout << "*End Day (Process Batch Files)**\n";
 			cout << "********************************\n";
 			cout << company.removeExpiredItems() << endl;
@@ -215,7 +230,7 @@ int main()
 			// rest of code here
 			sampleProgram();
 			break;
-		case 8:
+		case 0:
 			cout << endl;
 			cout << "******System Shutting Down******\n";
 			cout << "********************************\n";

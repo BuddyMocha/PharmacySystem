@@ -778,3 +778,75 @@ void Company::historicalSales()
 		}
 	}
 }
+
+void Company::assignStore()
+{
+	std::string input;
+	std::stringstream stream;
+	int idNum;
+	Store* store;
+	std::cout << "Which store do you wish to assign a new item to? Press \"x\" to cancel." << std::endl;
+	while (input != "x")
+	{
+		stream.clear();
+		std::cin >> input;
+		stream.str(input);
+		if (stream >> idNum && getStore(idNum) != nullptr)
+		{
+			store = getStore(idNum);
+			input = "x";
+		}
+	}
+	std::cout << "Which item do you wish to assign to the store? Input ID number or press \"x\" to cancel." << std::endl;
+	input = "";
+	while (input != "x")
+	{
+		stream.clear();
+		std::cin >> input;
+		stream.str(input);
+		if (stream >> idNum && getItem(idNum) != nullptr && store->getItem(idNum) == nullptr)
+		{
+			Item item(idNum, store->getItem(idNum)->defaultStoreQuantity, store->getItem(idNum)->requiredRestock, store->getItem(idNum)->restockQuantity);
+			item.vendorCode = store->getItem(idNum)->vendorCode;
+			item.dosage = store->getItem(idNum)->dosage;
+			item.name = store->getItem(idNum)->name;
+			item.price = store->getItem(idNum)->price;
+			store->addItemtoInv(item);
+		}
+	}
+}
+void Company::deleteFromStore()
+{
+	std::string input;
+	std::stringstream stream;
+	int idNum;
+	Store* store;
+	std::cout << "Which store do you wish to delete an item from? Press \"x\" to cancel." << std::endl;
+	while (input != "x")
+	{
+		stream.clear();
+		std::cin >> input;
+		stream.str(input);
+		if (stream >> idNum && getStore(idNum) != nullptr)
+		{
+			store = getStore(idNum);
+			input = "x";
+		}
+	}
+	std::cout << "Which item do you wish to delete from the store? Input ID number or press \"x\" to cancel." << std::endl;
+	input = "";
+	while (input != "x")
+	{
+		stream.clear();
+		std::cin >> input;
+		stream.str(input);
+		if (stream >> idNum && getItem(idNum) != nullptr && store->getItem(idNum) != nullptr)
+		{
+			if (store->getItem(idNum)->quantity == 0)
+			{
+				store->deleteItem(idNum);
+			}
+		}
+	}
+}
+

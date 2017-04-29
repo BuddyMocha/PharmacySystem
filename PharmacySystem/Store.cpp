@@ -260,7 +260,22 @@ std::string Store::toString()
 
 	return output;
 }
+void Store::deleteItem(int idNum)
+{
+	for (int x = 0; x < inventory.size(); x++)
+	{
+		if (inventory[x].idNum == idNum && inventory[x].quantity == 0)
+		{
+			inventory.erase(inventory.begin() + x);
+		}
+	}
 
+}
+
+std::vector<Item> Store::getItemList()
+{
+	return inventory;
+}
 
 
 
