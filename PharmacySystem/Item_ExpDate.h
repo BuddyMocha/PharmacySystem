@@ -20,10 +20,10 @@ struct Purchase;
 struct Item
 {
 	float price;
-	//MUST STILL IMPLIMENT
+
 	std::string name;
 	int dosage;
-	//
+
 	std::vector<Purchase> purchases;
 	int vendorCode;
 	int idNum, quantity, defaultStoreQuantity;

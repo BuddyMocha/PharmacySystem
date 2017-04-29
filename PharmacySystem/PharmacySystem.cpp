@@ -249,7 +249,7 @@ int main()
 			deleteStore(addDeleteStore, company, itemReceivedSeqDELSTORE);
 
 			itemReceived.clear();
-			itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
+			//itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
 			items2warehouse(itemReceived, company);
 
 			//Date plus one day

@@ -261,7 +261,6 @@ void Company::createCustomer()
 			{
 				insurance = getInsurance(idNum);
 			}
-
 		}
 		addCustomer(Customer(name, address, phoneNum, insurance));
 		return;
@@ -370,7 +369,6 @@ void Company::transaction()
 				std::cout << currentStore->getItem(inputNum)->toString() << std::endl;
 				while (input != "n" && input != "x")
 				{
-
 					std::cout << "\nWhat quantity of this item do you wish to purchase? Input \"x\" to choose another item." << std::endl;
 
 					std::cin >> input;
@@ -813,10 +811,20 @@ void Company::assignStore()
 			item.price = getItem(idNum)->price;
 			item.quantity = 0;
 			store->addItemtoInv(item);
+			std::cout << "Item added to store." << std::endl;
 			input = "x";
+		}
+		else if (input != "x" && store->getItem(idNum) != nullptr)
+		{
+			std::cout << "Item already exists. Input new ID number or press \"x\" to cancel." << std::endl;
+		}
+		else
+		{
+			std::cout << "Please input a valid item ID number." << std::endl;
 		}
 	}
 }
+
 void Company::deleteFromStore()
 {
 	std::string input;
@@ -847,8 +855,18 @@ void Company::deleteFromStore()
 			if (store->getItem(idNum)->quantity == 0)
 			{
 				store->deleteItem(idNum);
+				std::cout << "Item deleted from store." << std::endl;
 				input = "x";
 			}
+			else if(input != "x")
+			{
+				std::cout << "Item's quantity is greater than 0, removal denied." << std::endl;
+			}
+			
+		}
+		else if (input != "x")
+		{
+			std::cout << "Please input a valid item ID number." << std::endl;
 		}
 	}
 }
