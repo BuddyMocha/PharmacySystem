@@ -246,7 +246,11 @@ int main()
 				cout << stores[i].getID() << endl;
 			}
 			*/
-			deleteStore(addDeleteStore, company);
+			deleteStore(addDeleteStore, company, itemReceivedSeqDELSTORE);
+
+			itemReceived.clear();
+			itemReceived = ItemReceived(itemReceived, itemReceivedSeqDELSTORE, "itemreceivedDELSTORE.txt");
+			items2warehouse(itemReceived, company);
 
 			//Date plus one day
 			company.datePlusDays(1);
