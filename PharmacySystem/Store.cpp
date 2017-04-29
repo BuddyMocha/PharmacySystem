@@ -124,15 +124,12 @@ std::string Store::removeExpiredItems(int day, int month, int year)
 		std::sort(inventory[x].expirationDates.begin(), inventory[x].expirationDates.end());
 		//for (int y = 0; y < inventory[x].expirationDates.size(); x++)
 		//{
-			if (inventory[x].expirationDates[0] < date || inventory[x].expirationDates[0] == date)
+			if (inventory[x].expirationDates.size() > 0 && (inventory[x].expirationDates[0] < date || inventory[x].expirationDates[0] == date))
 			{
 				inventory[x].quantity -= inventory[x].expirationDates[0].quantity;
 				output << "Removed " << inventory[x].expirationDates[0].quantity << " expired items of ID " << inventory[x].idNum << "\n";
 				inventory[x].expirationDates.erase(inventory[x].expirationDates.begin()); // + y
-			}
-			else
-			{
-
+				x--;
 			}
 		//}
 	}
