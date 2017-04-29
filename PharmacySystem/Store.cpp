@@ -294,6 +294,15 @@ void Store::restockStore()
 	}
 }
 
+std::vector<Order> Store::getOrders()
+{
+	return currentOrder;
+}
+
+void Store::clearOrders()
+{
+	currentOrder.clear();
+}
 
 
 

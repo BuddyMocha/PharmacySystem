@@ -51,6 +51,9 @@ public:
 	void addPurchase(Purchase p);
 	std::vector<Purchase>& getPurchaseList();
 	std::string getPurchaseHistory();
+	//Orders
+	std::vector<Order> getOrders();
+	void clearOrders();
 	//Class Functions
 	void editItemData();
 	void restockStore();
